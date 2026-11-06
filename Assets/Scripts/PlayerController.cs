@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 10f;
     public float maxSpeed = 4f;
+    public GameObject contextPrompt;
     private Rigidbody2D rb;
     float xInput, yInput;
     bool interacting;
@@ -21,6 +22,24 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MovePlayer();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.TryGetComponent<IInteractable>(out IInteractable interactable))
+            contextPrompt.SetActive(true);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<IInteractable>(out IInteractable interactable) && interacting)
+            interactable.Interact();
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<IInteractable>(out IInteractable interactable))
+            contextPrompt.SetActive(false);
     }
 
     private void MovePlayer()
