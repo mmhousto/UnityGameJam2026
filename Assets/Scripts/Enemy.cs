@@ -55,7 +55,11 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         healthBar.value = Health;
         healthLbl.text = $"{Health}/{maxHealth}";
-        healthBar.value = Health;
+    }
+
+    public void UpdateShield()
+    {
+        shieldLbl.text = block.ToString();
     }
 
     /*

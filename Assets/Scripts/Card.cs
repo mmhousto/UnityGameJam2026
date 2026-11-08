@@ -17,6 +17,9 @@ public class Card : MonoBehaviour
     public TextMeshProUGUI stamUI;
     public TextMeshProUGUI luckUI;
 
+    private GameObject collidingObject;
+    private SpriteRenderer sprite;
+    private Canvas canvas;
     private Vector3 baseScale;
     private bool collidingEnemy, collidingPlayer;
     private Vector3 startPos;
@@ -26,6 +29,8 @@ public class Card : MonoBehaviour
     {
         startPos = transform.position;
         baseScale = transform.localScale;
+        sprite = GetComponent<SpriteRenderer>();
+        canvas = GetComponentInChildren<Canvas>();
     }
 
     // Update is called once per frame
@@ -55,10 +60,12 @@ public class Card : MonoBehaviour
         if (other.CompareTag("Enemy") && !uiCard)
         {
             collidingEnemy = true;
+            collidingObject = other.gameObject;
         }
         else if (other.CompareTag("Player") && !uiCard)
         {
             collidingPlayer = true;
+            collidingObject = other.gameObject;
         }
     }
 
@@ -67,23 +74,33 @@ public class Card : MonoBehaviour
         if (other.CompareTag("Enemy") && !uiCard)
         {
             collidingEnemy = false;
+            collidingObject = null;
         }
         else if (other.CompareTag("Player") && !uiCard)
         {
             collidingPlayer = false;
+            collidingObject = null;
         }
     }
 
     private void OnMouseEnter()
     {
         if (!uiCard)
+        {
             transform.localScale *= 1.5f;
+            sprite.sortingOrder += 2;
+            canvas.sortingOrder += 2;
+        }
     }
 
     private void OnMouseExit()
     {
         if (!uiCard)
+        {
             transform.localScale = baseScale;
+            sprite.sortingOrder -= 2;
+            canvas.sortingOrder -= 2;
+        }
     }
 
     private void OnMouseDrag()
@@ -105,6 +122,27 @@ public class Card : MonoBehaviour
         {
             transform.position = startPos;
         }
+
+        if (collidingEnemy && type == CardType.Attack)
+        {
+            GameManager.Instance.AttackEnemy(collidingObject, this);
+        }
+    }
+
+    public void UpdateStartPosition()
+    {
+        startPos = transform.position;
+    }
+
+    public void SetUpCard(PlayingCard card)
+    {
+        type = card.type;
+        cardName = card.cardName;
+        damage = card.damage;
+        stamina = card.stamina;
+        block = card.block;
+        luckyNumber = card.luckyNumber;
+
     }
 
 }

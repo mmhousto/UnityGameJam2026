@@ -129,6 +129,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7454961654098059053, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
   m_PrefabInstance: {fileID: 7506917241829792268}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &196048659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2879995286013041682, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+  m_PrefabInstance: {fileID: 7506917241829792268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &238104823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4685919063716846541, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+  m_PrefabInstance: {fileID: 7506917241829792268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &242521671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9212031627233031648, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+  m_PrefabInstance: {fileID: 7506917241829792268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &392485639
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +274,11 @@ MonoBehaviour:
 --- !u!1 &460551938 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4680018145292533053, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+  m_PrefabInstance: {fileID: 7506917241829792268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &590215225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9097213545228817429, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
   m_PrefabInstance: {fileID: 7506917241829792268}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &660153514
@@ -675,6 +695,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86ee7e8bc2f53c9469be84afb47faeb1, type: 3}
+--- !u!1 &1840310471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 573625602845158920, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+  m_PrefabInstance: {fileID: 7506917241829792268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1299527277249547117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -784,6 +809,70 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: stamina
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: luckyLbl
+      value: 
+      objectReference: {fileID: 7000090681043199527}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 7000090681043199529}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: healthLbl
+      value: 
+      objectReference: {fileID: 7000090681043199528}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: shieldLbl
+      value: 
+      objectReference: {fileID: 7000090681043199526}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: playerInfoHUD
+      value: 
+      objectReference: {fileID: 590215225}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: staminaUI.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: 'staminaUI.Array.data[0]'
+      value: 
+      objectReference: {fileID: 7000090681043199525}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: 'staminaUI.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7000090681043199524}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: 'staminaUI.Array.data[2]'
+      value: 
+      objectReference: {fileID: 7000090681043199523}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: 'staminaUI.Array.data[3]'
+      value: 
+      objectReference: {fileID: 7000090681043199522}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: 'staminaUI.Array.data[4]'
+      value: 
+      objectReference: {fileID: 7000090681043199520}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: 'staminaUI.Array.data[5]'
+      value: 
+      objectReference: {fileID: 242521671}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: 'staminaUI.Array.data[6]'
+      value: 
+      objectReference: {fileID: 1840310471}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: 'staminaUI.Array.data[7]'
+      value: 
+      objectReference: {fileID: 238104823}
+    - target: {fileID: 8343480044786518643, guid: d2762c4635ebe90489db86eb539cc2f1, type: 3}
+      propertyPath: 'staminaUI.Array.data[8]'
+      value: 
+      objectReference: {fileID: 196048659}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -967,6 +1056,75 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 656636bbb0c308e4e9f0e05eecd42faa, type: 3}
+--- !u!1 &7000090681043199520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6468354904528056455, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+  m_PrefabInstance: {fileID: 7506917241829792268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7000090681043199522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 911096080764630930, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+  m_PrefabInstance: {fileID: 7506917241829792268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7000090681043199523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 585030283281048792, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+  m_PrefabInstance: {fileID: 7506917241829792268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7000090681043199524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5671009890086080050, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+  m_PrefabInstance: {fileID: 7506917241829792268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7000090681043199525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4964684641002066745, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+  m_PrefabInstance: {fileID: 7506917241829792268}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7000090681043199526 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2353943322401991525, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+  m_PrefabInstance: {fileID: 7506917241829792268}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &7000090681043199527 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1688538643703130607, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+  m_PrefabInstance: {fileID: 7506917241829792268}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &7000090681043199528 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5811863416983087581, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+  m_PrefabInstance: {fileID: 7506917241829792268}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &7000090681043199529 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1802301049297374899, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+  m_PrefabInstance: {fileID: 7506917241829792268}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1001 &7506917241829792268
 PrefabInstance:
   m_ObjectHideFlags: 0
