@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private List<PlayingCard> discardPile = new List<PlayingCard>();
     private List<PlayingCard> currentDeck;
     private List<Card> cardsInHand = new List<Card>();
+    private ArrangePlayerHand arrangePlayerHand;
 
     private void Awake()
     {
@@ -33,12 +34,13 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        arrangePlayerHand = playerHandObject.GetComponent<ArrangePlayerHand>();
         player = GameObject.FindWithTag("PlayerData").GetComponent<Player>();
         cardManager = GameObject.FindWithTag("CardManager").GetComponent<CardManager>();
         player.playerInfoHUD.SetActive(true);
         currentDeck = new List<PlayingCard>(cardManager.playerDeck);
         Shuffle(currentDeck);
-        DrawXTimes(5);
+        DrawCards(5);
     }
 
     // Update is called once per frame
@@ -47,19 +49,29 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void DrawXTimes(int draws)
+    void DrawCards(int draws)
     {
         for(int i = 0; i < draws; i++)
         {
             GameObject newCard = Instantiate(cardPrefab, playerHandObject);
             Card c = newCard.GetComponent<Card>();
+
+            // Check if ran out of cards
+            if(currentDeck.Count <= 0)
+            {
+                currentDeck.AddRange(discardPile); // Adds discard pile to deck
+                discardPile.Clear(); // clears discards pile
+                Shuffle(currentDeck); // shuffle deck
+            }
+
             c.SetUpCard(currentDeck[0]);
             cardsInHand.Add(c);
 
             playerHand.Add(currentDeck[0]);
             currentDeck.RemoveAt(0);
         }
-        
+
+        arrangePlayerHand.ArrangeChildren();
     }
 
     void Shuffle(List<PlayingCard> list)
@@ -93,38 +105,165 @@ public class GameManager : MonoBehaviour
 
     public void AttackEnemy(GameObject enemy, Card card)
     {
-        Enemy enemyBeingHit = enemy.GetComponent<Enemy>();
-        int incomingDamage = card.damage;
+        if (player.stamina >= card.stamina)
+        {
+            player.UseStamina(card.stamina);
 
-        if(card.luckyNumber == player.luckyNumber)
-        {
-            incomingDamage *= 7;
-            player.TakeDamage(-7);
-            player.block += 7;
-        }
-        else if (card.luckyNumber + player.luckyNumber == 14)
-        {
-            incomingDamage += 7;
-            player.TakeDamage(-7);
-            player.block += 7;
-        }
-        
-        // Can Enemy Block
-        if(incomingDamage > enemyBeingHit.block)
-        {
-            incomingDamage -= enemyBeingHit.block;
-            enemyBeingHit.block = 0;
+            Enemy enemyBeingHit = enemy.GetComponent<Enemy>();
+            int incomingDamage = card.damage;
+
+            if (card.luckyNumber == player.luckyNumber)
+            {
+                incomingDamage *= 7;
+                player.TakeDamage(-7);
+                player.block += 7;
+            }
+            else if (card.luckyNumber + player.luckyNumber == 14)
+            {
+                incomingDamage += 7;
+                player.TakeDamage(-7);
+                player.block += 7;
+            }
+
+            // Can Enemy Block
+            if (incomingDamage > enemyBeingHit.block)
+            {
+                incomingDamage -= enemyBeingHit.block;
+                enemyBeingHit.block = 0;
+            }
+            else
+            {
+                enemyBeingHit.block -= incomingDamage;
+                incomingDamage = 0;
+            }
+
+            enemyBeingHit.UpdateShield();
+            enemyBeingHit.TakeDamage(incomingDamage);
+
+            DiscardCard(card);
         }
         else
         {
-            enemyBeingHit.block -= incomingDamage;
-            incomingDamage = 0;
+            card.SetToStartPosition();
         }
-        enemyBeingHit.UpdateShield();
-        enemyBeingHit.TakeDamage(incomingDamage);
+    }
 
+    public void HealPlayer(Card card)
+    {
+        if(player.stamina >= card.stamina)
+        {
+            int incomingHealth = card.damage;
+            if (card.luckyNumber == player.luckyNumber)
+            {
+                incomingHealth *= 7;
+                player.TakeDamage(-incomingHealth);
+                player.AddBlock(7);
+            }
+            else if (card.luckyNumber + player.luckyNumber == 14)
+            {
+                incomingHealth += 7;
+                player.TakeDamage(-incomingHealth);
+                player.AddBlock(7);
+            }
+            else
+            {
+                player.TakeDamage(-card.damage);
+            }
+
+            player.UseStamina(card.stamina);
+            DiscardCard(card);
+        }
+        else
+        {
+            card.SetToStartPosition();
+        }
+
+    }
+
+    public void BlockPlayer(Card card)
+    {
+        if (player.stamina >= card.stamina)
+        {
+            int incomingBlock = card.block;
+            if (card.luckyNumber == player.luckyNumber)
+            {
+                incomingBlock *= 7;
+                player.TakeDamage(-7);
+                player.AddBlock(incomingBlock);
+            }
+            else if (card.luckyNumber + player.luckyNumber == 14)
+            {
+                incomingBlock += 7;
+                player.TakeDamage(-7);
+                player.AddBlock(incomingBlock);
+            }
+            else
+            {
+                player.AddBlock(card.block);
+            }
+
+            player.UseStamina(card.stamina);
+            DiscardCard(card);
+        }
+        else
+        {
+            card.SetToStartPosition();
+        }
+    }
+
+    public void EndTurn()
+    {
+        // Enemy Attacks
+        PerformEnemyAttacks();
+
+        // Player Draws til 5 cards
+        int numCardsInHand = cardsInHand.Count;
+        int cardsToDraw = 5 - numCardsInHand;
+        if(cardsToDraw < 0) cardsToDraw = 0;
+        DrawCards(cardsToDraw);
+        player.SetStamina(4);
+    }
+
+    private void DiscardCard(Card card)
+    {
+        int newLuck = Random.Range(2, 13);
+        cardManager.UpdateLuckyNumber(card.GetPlayingCard(), newLuck);
+        card.GetNewLuckyNumber(newLuck); // Gets new Lucky Number
         // ADD TO DISCARD PILE
+        discardPile.Add(card.GetPlayingCard());
         // REMOVE FROM HAND
+        playerHand.Remove(card.GetPlayingCard());
+        cardsInHand.Remove(card);
 
+        // NEED TO MAKE THIS BETTER WITH OBJECT POOLING IF TIME PERMITS
+        Destroy(card.gameObject);
+    }
+
+    private void PerformEnemyAttacks()
+    {
+        foreach (Enemy enemy in enemies)
+        {
+            //Checks if player has blocks
+            int incomingDamage = enemy.GetCurrentHit();
+            if (incomingDamage > player.block)
+            {
+                incomingDamage -= player.block;
+                player.block = 0;
+            }
+            else
+            {
+                player.block -= incomingDamage;
+                incomingDamage = 0;
+            }
+
+            //Update Block Number
+            player.UpdateShieldUI();
+
+            // Player Takes Damage
+            player.TakeDamage(incomingDamage);
+
+            // Enemy Displays Next Hit
+            enemy.GetNextHit();
+        }
     }
 }

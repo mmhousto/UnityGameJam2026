@@ -17,6 +17,7 @@ public class Card : MonoBehaviour
     public TextMeshProUGUI stamUI;
     public TextMeshProUGUI luckUI;
 
+    private PlayingCard playingCard;
     private GameObject collidingObject;
     private SpriteRenderer sprite;
     private Canvas canvas;
@@ -107,6 +108,8 @@ public class Card : MonoBehaviour
     {
         if (!uiCard)
         {
+            if(transform.localScale != baseScale)
+                transform.localScale = baseScale;
             Vector3 mouseScreenPos = Input.mousePosition;
             mouseScreenPos.z = 10f;
             transform.position = Camera.main.ScreenToWorldPoint(mouseScreenPos);
@@ -127,6 +130,14 @@ public class Card : MonoBehaviour
         {
             GameManager.Instance.AttackEnemy(collidingObject, this);
         }
+        else if(collidingPlayer && type == CardType.Heal)
+        {
+            GameManager.Instance.HealPlayer(this);
+        }
+        else if (collidingPlayer && type == CardType.Block)
+        {
+            GameManager.Instance.BlockPlayer(this);
+        }
     }
 
     public void UpdateStartPosition()
@@ -134,15 +145,33 @@ public class Card : MonoBehaviour
         startPos = transform.position;
     }
 
+    public void SetToStartPosition()
+    {
+        transform.position = startPos;
+    }
+
     public void SetUpCard(PlayingCard card)
     {
-        type = card.type;
-        cardName = card.cardName;
-        damage = card.damage;
-        stamina = card.stamina;
-        block = card.block;
-        luckyNumber = card.luckyNumber;
+        playingCard = card;
+        type = playingCard.type;
+        name = playingCard.cardName;
+        cardName = playingCard.cardName;
+        damage = playingCard.damage;
+        stamina = playingCard.stamina;
+        block = playingCard.block;
+        luckyNumber = playingCard.luckyNumber;
 
+    }
+
+    public PlayingCard GetPlayingCard()
+    {
+        return playingCard;
+    }
+
+    public void GetNewLuckyNumber(int newLucky)
+    {
+        playingCard.luckyNumber = newLucky;
+        luckyNumber = newLucky;
     }
 
 }

@@ -16,7 +16,7 @@ public class ArrangePlayerHand : MonoBehaviour
         
     }
 
-    void ArrangeChildren()
+    public void ArrangeChildren()
     {
         int childCount = transform.childCount;
         if (childCount == 0) return;

@@ -53,6 +53,10 @@ public class Enemy : MonoBehaviour, IDamagable
 
     private void UpdateHealth()
     {
+        if (Health > maxHealth)
+        {
+            Health = maxHealth;
+        }
         healthBar.value = Health;
         healthLbl.text = $"{Health}/{maxHealth}";
     }
@@ -90,22 +94,14 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             nextAttackDmg *= 7;
             block += 7;
-            Health += 7;
-            if (Health > maxHealth)
-            {
-                Health = maxHealth;
-            }
+            TakeDamage(-7);
             baseDamage += 7;
         }
         else if (sum == 14)
         {
             nextAttackDmg += 7 + roll;
             block += 7;
-            Health += 7;
-            if (Health > maxHealth)
-            {
-                Health = maxHealth;
-            }
+            TakeDamage(-7);
         }
         else
         {
@@ -127,12 +123,8 @@ public class Enemy : MonoBehaviour, IDamagable
                     Debug.Log("Enemy Block");
                     break;
                 case 2://Heal
-                    Health += roll;
+                    TakeDamage(-roll);
                     Debug.Log("Enemy Heal");
-                    if (Health > maxHealth)
-                    {
-                        Health = maxHealth;
-                    }
                     break;
 
             }
@@ -142,6 +134,11 @@ public class Enemy : MonoBehaviour, IDamagable
         Debug.Log($"Enemy Next Attack Damage: {nextAttackDmg}");
         nextDmgLbl.text = nextAttackDmg.ToString();
         shieldLbl.text = block.ToString();
+    }
+
+    public int GetCurrentHit()
+    {
+        return nextAttackDmg;
     }
 
 }

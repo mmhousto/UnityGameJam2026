@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
+    private List<Card> playerCards = new List<Card>();
     public List<PlayingCard> playerDeck = new List<PlayingCard>();
-
     public List<PlayingCard> uniqueCards = new List<PlayingCard>();
     public GameObject hud;
     public GameObject viewDeckContent;
@@ -45,14 +45,8 @@ public class CardManager : MonoBehaviour
         {
             GameObject newCard = Instantiate(cardUI, viewDeckContent.transform);
             Card theCard = newCard.GetComponent<Card>();
-            theCard.type = card.type;
-            theCard.name = card.cardName;
-            theCard.cardName = card.cardName;
-            theCard.damage = card.damage;
-            theCard.stamina = card.stamina;
-            theCard.block = card.block;
-            theCard.luckyNumber = card.luckyNumber;
-
+            theCard.SetUpCard(card);
+            playerCards.Add(theCard);
         }
 
         // ATTACKING CARDS
@@ -70,5 +64,17 @@ public class CardManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UpdateLuckyNumber(PlayingCard playingCard, int newLucky)
+    {
+        foreach(Card card in playerCards)
+        {
+            if(card.GetPlayingCard() == playingCard)
+            {
+                card.luckyNumber = newLucky;
+                card.GetPlayingCard().luckyNumber = newLucky;
+            }
+        }
     }
 }

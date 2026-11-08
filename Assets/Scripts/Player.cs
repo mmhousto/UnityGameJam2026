@@ -23,6 +23,7 @@ public class Player : MonoBehaviour, IDamagable
     public int baseDamage = 5;
     public int stamina;
     public int block = 0;
+    public int nipCoin = 0;
 
     private void Awake()
     {
@@ -45,8 +46,7 @@ public class Player : MonoBehaviour, IDamagable
         stamina = 4;
         UpdateStaminaUI();
 
-        luckyNumber = Random.Range(2, 13);
-        luckyLbl.text = luckyNumber.ToString();
+        GenerateLuckyNumber();
 
         AddBlock(0);
     }
@@ -57,10 +57,28 @@ public class Player : MonoBehaviour, IDamagable
         
     }
 
+    public void GenerateLuckyNumber()
+    {
+        luckyNumber = Random.Range(2, 13);
+        luckyLbl.text = luckyNumber.ToString();
+    }
+
     public void TakeDamage(int damage)
     {
         Health -= damage;
         UpdateHealth();
+    }
+
+    public void UseStamina(int cardStamina)
+    {
+        stamina -= cardStamina;
+        UpdateStaminaUI();
+    }
+
+    public void SetStamina(int staminaToSet)
+    {
+        stamina = staminaToSet;
+        UpdateStaminaUI();
     }
 
     private void SetHealth(int newHealth)
@@ -73,6 +91,10 @@ public class Player : MonoBehaviour, IDamagable
 
     private void UpdateHealth()
     {
+        if (Health > maxHealth)
+        {
+            Health = maxHealth;
+        }
         healthBar.value = Health;
         healthLbl.text = $"{Health}/{maxHealth}";
     }
@@ -94,13 +116,13 @@ public class Player : MonoBehaviour, IDamagable
         }
     }
 
-    private void AddBlock(int blockToAdd)
+    public void AddBlock(int blockToAdd)
     {
         block += blockToAdd;
         UpdateShieldUI();
     }
 
-    private void UpdateShieldUI()
+    public void UpdateShieldUI()
     {
         shieldLbl.text = block.ToString();
     }
