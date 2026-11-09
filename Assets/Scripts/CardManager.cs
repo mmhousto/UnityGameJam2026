@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
+    private static CardManager instance;
+    public static CardManager Instance {  get { return instance; } }
+
     private List<Card> playerCards = new List<Card>();
     public List<PlayingCard> playerDeck = new List<PlayingCard>();
     public List<PlayingCard> uniqueCards = new List<PlayingCard>();
@@ -12,8 +15,16 @@ public class CardManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(hud);
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(hud);
+        }
     }
 
     /*
@@ -28,6 +39,62 @@ public class CardManager : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
+    {
+        SetStartingDeck();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void UpdateLuckyNumber(PlayingCard playingCard, int newLucky)
+    {
+        foreach(Card card in playerCards)
+        {
+            if(card.GetPlayingCard() == playingCard)
+            {
+                card.luckyNumber = newLucky;
+                card.GetPlayingCard().luckyNumber = newLucky;
+            }
+        }
+    }
+
+    public void UpdateDamage(PlayingCard playingCard, int newValue)
+    {
+        foreach (Card card in playerCards)
+        {
+            if (card.GetPlayingCard() == playingCard)
+            {
+                card.damage = newValue;
+                card.GetPlayingCard().damage = newValue;
+            }
+        }
+    }
+
+    public void UpdateBlock(PlayingCard playingCard, int newValue)
+    {
+        foreach (Card card in playerCards)
+        {
+            if (card.GetPlayingCard() == playingCard)
+            {
+                card.block = newValue;
+                card.GetPlayingCard().block = newValue;
+            }
+        }
+    }
+
+    public void ResetCardManager()
+    {
+        playerCards.Clear();
+        playerDeck.Clear();
+        uniqueCards.Clear();
+
+        SetStartingDeck();
+    }
+
+    public void SetStartingDeck()
     {
         // STARTING DECK
         playerDeck.Add(new PlayingCard(CardType.Attack, "Scratch", 2, 1, 0, Random.Range(2, 13)));
@@ -58,23 +125,5 @@ public class CardManager : MonoBehaviour
 
         //Blocking Cards
         uniqueCards.Add(new PlayingCard(CardType.Block, "Knead", 0, 3, 8, Random.Range(2, 13)));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void UpdateLuckyNumber(PlayingCard playingCard, int newLucky)
-    {
-        foreach(Card card in playerCards)
-        {
-            if(card.GetPlayingCard() == playingCard)
-            {
-                card.luckyNumber = newLucky;
-                card.GetPlayingCard().luckyNumber = newLucky;
-            }
-        }
     }
 }

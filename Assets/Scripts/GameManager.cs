@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +13,11 @@ public class GameManager : MonoBehaviour
     public Enemy[] enemies;
     public GameObject cardPrefab;
     public Transform playerHandObject;
+    public GameObject gameOverScreen;
+    public GameObject gameWinScreen;
 
+    private bool gameOver;
+    private int enemyCount;
     private List<PlayingCard> playerHand = new List<PlayingCard>();
     private List<PlayingCard> discardPile = new List<PlayingCard>();
     private List<PlayingCard> currentDeck;
@@ -34,6 +39,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameOver = false;
         arrangePlayerHand = playerHandObject.GetComponent<ArrangePlayerHand>();
         player = GameObject.FindWithTag("PlayerData").GetComponent<Player>();
         cardManager = GameObject.FindWithTag("CardManager").GetComponent<CardManager>();
@@ -46,7 +52,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(player.Health <= 0 && gameOver == false)
+        {
+            GameOver();
+        }
+
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        if(enemyCount <= 0 && gameOver == false)
+        {
+            GameWin();
+        }
     }
 
     void DrawCards(int draws)
@@ -117,6 +132,12 @@ public class GameManager : MonoBehaviour
                 incomingDamage *= 7;
                 player.TakeDamage(-7);
                 player.block += 7;
+                player.IncreaseMaxStamina();
+
+                // Increase Card Damage/Block/Heal Permanently
+                card.damage += 3;
+                card.GetPlayingCard().damage = card.damage;
+                cardManager.UpdateDamage(card.GetPlayingCard(), card.damage);
             }
             else if (card.luckyNumber + player.luckyNumber == 14)
             {
@@ -158,6 +179,12 @@ public class GameManager : MonoBehaviour
                 incomingHealth *= 7;
                 player.TakeDamage(-incomingHealth);
                 player.AddBlock(7);
+                player.IncreaseMaxStamina();
+
+                // Increase Card Damage/Block/Heal Permanently
+                card.damage += 3;
+                card.GetPlayingCard().damage = card.damage;
+                cardManager.UpdateDamage(card.GetPlayingCard(), card.damage);
             }
             else if (card.luckyNumber + player.luckyNumber == 14)
             {
@@ -187,9 +214,15 @@ public class GameManager : MonoBehaviour
             int incomingBlock = card.block;
             if (card.luckyNumber == player.luckyNumber)
             {
-                incomingBlock *= 7;
-                player.TakeDamage(-7);
-                player.AddBlock(incomingBlock);
+                incomingBlock *= 7; // *7 block
+                player.TakeDamage(-7); // +7 health
+                player.AddBlock(incomingBlock); // Adds block
+                player.IncreaseMaxStamina(); // Increase Max Stamina by 1
+
+                // Increase Card Damage/Block/Heal Permanently
+                card.block += 3;
+                card.GetPlayingCard().block = card.block;
+                cardManager.UpdateBlock(card.GetPlayingCard(), card.block);
             }
             else if (card.luckyNumber + player.luckyNumber == 14)
             {
@@ -221,7 +254,7 @@ public class GameManager : MonoBehaviour
         int cardsToDraw = 5 - numCardsInHand;
         if(cardsToDraw < 0) cardsToDraw = 0;
         DrawCards(cardsToDraw);
-        player.SetStamina(4);
+        player.SetStamina(player.maxStamina);
     }
 
     private void DiscardCard(Card card)
@@ -265,5 +298,24 @@ public class GameManager : MonoBehaviour
             // Enemy Displays Next Hit
             enemy.GetNextHit();
         }
+    }
+
+    public void GameOver()
+    {
+        gameOver = true;
+        gameOverScreen.SetActive(true);
+    }
+
+    public void GameWin()
+    {
+        gameOver = true;
+        gameOverScreen.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        player.ResetPlayer();
+        cardManager.ResetCardManager();
+        SceneManager.LoadScene(0);
     }
 }
