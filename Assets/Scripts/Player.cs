@@ -24,6 +24,7 @@ public class Player : MonoBehaviour, IDamagable
     public int stamina;
     public int block = 0;
     public int nipCoin = 0;
+    public int maxStamina = 4;
 
     private void Awake()
     {
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour, IDamagable
     {
         SetHealth(maxHealth);
 
-        stamina = 4;
+        stamina = maxStamina;
         UpdateStaminaUI();
 
         GenerateLuckyNumber();
@@ -67,6 +68,15 @@ public class Player : MonoBehaviour, IDamagable
     {
         Health -= damage;
         UpdateHealth();
+    }
+
+    public void IncreaseMaxStamina()
+    {
+        maxStamina++;
+        if(maxStamina >= 9)
+        {
+            maxStamina = 9;
+        }
     }
 
     public void UseStamina(int cardStamina)
@@ -125,5 +135,21 @@ public class Player : MonoBehaviour, IDamagable
     public void UpdateShieldUI()
     {
         shieldLbl.text = block.ToString();
+    }
+
+    public void ResetPlayer()
+    {
+        maxStamina = 4;
+        maxHealth = 100;
+        block = 0;
+
+        SetHealth(maxHealth);
+
+        stamina = maxStamina;
+        UpdateStaminaUI();
+
+        GenerateLuckyNumber();
+
+        AddBlock(0);
     }
 }

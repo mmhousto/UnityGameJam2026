@@ -57,6 +57,12 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             Health = maxHealth;
         }
+        if (Health < 0)
+        {
+            Health = 0;
+            //Play Death Anim
+            Destroy(gameObject, 1f);
+        }
         healthBar.value = Health;
         healthLbl.text = $"{Health}/{maxHealth}";
     }
