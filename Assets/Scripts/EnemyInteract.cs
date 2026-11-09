@@ -4,9 +4,10 @@ using UnityEngine.SceneManagement;
 public class EnemyInteract : MonoBehaviour, IInteractable
 {
     public bool IsInteractable { get; set; }
+    public int sceneToLoad = 1;
 
     public void Interact()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(sceneToLoad);
     }
 }

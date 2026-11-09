@@ -7,26 +7,37 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed = 4f;
     public GameObject contextPrompt;
     private Rigidbody2D rb;
+    private SpriteRenderer sprite;
     float xInput, yInput;
     bool interacting;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
 
-        
+        if(contextPrompt == null)
+        {
+            contextPrompt = GameObject.FindWithTag("ContextPrompt");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (contextPrompt == null)
+        {
+            contextPrompt = GameObject.FindWithTag("ContextPrompt");
+        }
+
         MovePlayer();
+        FlipSprite();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<IInteractable>(out IInteractable interactable))
+        if(collision.TryGetComponent<IInteractable>(out IInteractable interactable) && contextPrompt != null)
             contextPrompt.SetActive(true);
     }
 
@@ -38,8 +49,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<IInteractable>(out IInteractable interactable))
+        if (collision.TryGetComponent<IInteractable>(out IInteractable interactable) && contextPrompt != null)
             contextPrompt.SetActive(false);
+    }
+
+    private void FlipSprite()
+    {
+        if(xInput > 0 && sprite.flipX == false)
+            sprite.flipX = true;
+
+        if(xInput < 0 && sprite.flipX == true)
+            sprite.flipX = false;
     }
 
     private void MovePlayer()

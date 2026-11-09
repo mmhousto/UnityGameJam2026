@@ -6,11 +6,29 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Morgan Test Scene.unity
-    guid: 39b68e906e2140a4f9d2339a3d71ccd5
+    path: Assets/Scenes/Street - area 1.unity
+    guid: 840cb33bf3ca23749bf3061162054707
   - enabled: 1
     path: Assets/Scenes/FightScene.unity
     guid: 265db3292fe57544288ae6ac4a79f3ef
+  - enabled: 1
+    path: Assets/Scenes/Market - Area 2.unity
+    guid: a52ed0d282dc328499251fb248028806
+  - enabled: 1
+    path: Assets/Scenes/FightScene2.unity
+    guid: f4b994371cdd6c049b020f9342f254ad
+  - enabled: 1
+    path: Assets/Scenes/debauche street - area 3.unity
+    guid: 1044de57316d2b049b4b1c589ed705b5
+  - enabled: 1
+    path: Assets/Scenes/FightScene3.unity
+    guid: 64ca07817b0d94842a0be5e98066ed9a
+  - enabled: 1
+    path: Assets/Scenes/Park - Area 4.unity
+    guid: 931775d3b9713654f87fda84bb618353
+  - enabled: 1
+    path: Assets/Scenes/FightScene4.unity
+    guid: a34a0be3c191fb749b9a061cc0791e8a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

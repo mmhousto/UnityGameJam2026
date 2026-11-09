@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - PlayerData
   - CardManager
+  - ContextPrompt
   layers:
   - Default
   - TransparentFX
