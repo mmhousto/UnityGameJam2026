@@ -54,8 +54,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  playerInfoHUD: {fileID: 0}
   maxHealth: 100
   luckyNumber: 0
   baseDamage: 5
-  stamina: 5
+  stamina: 4
   block: 0
+  nipCoin: 0
+  maxStamina: 4

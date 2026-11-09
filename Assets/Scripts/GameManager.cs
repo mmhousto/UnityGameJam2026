@@ -309,7 +309,7 @@ public class GameManager : MonoBehaviour
     public void GameWin()
     {
         gameOver = true;
-        gameOverScreen.SetActive(true);
+        gameWinScreen.SetActive(true);
     }
 
     public void Restart()
@@ -317,5 +317,10 @@ public class GameManager : MonoBehaviour
         player.ResetPlayer();
         cardManager.ResetCardManager();
         SceneManager.LoadScene(0);
+    }
+
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
