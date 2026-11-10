@@ -141,6 +141,21 @@ public class GameManager : MonoBehaviour
             Enemy enemyBeingHit = enemy.GetComponent<Enemy>();
             int incomingDamage = card.damage;
 
+            // The Box - 50% chance to hit enemy or you for 1/2 damage
+            if (card.cardName == "The Box")
+            {
+                float random = Random.Range(0, 1f);
+
+                if (random >= 0.5)
+                {
+
+                }
+                else
+                {
+                    incomingDamage /= 2;
+                }
+            }
+
             if (card.luckyNumber == player.luckyNumber)
             {
                 incomingDamage *= 7;
