@@ -87,6 +87,15 @@ public class GameManager : MonoBehaviour
         }
 
         arrangePlayerHand.ArrangeChildren();
+        ResetCardPosition();
+    }
+
+    void ResetCardPosition()
+    {
+        foreach(Card c in cardsInHand)
+        {
+            c.UpdateStartPosition();
+        }
     }
 
     void Shuffle(List<PlayingCard> list)
