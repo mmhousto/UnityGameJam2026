@@ -104,16 +104,16 @@ public class CardManager : MonoBehaviour
     public void SetStartingDeck()
     {
         // STARTING DECK
-        playerDeck.Add(new PlayingCard(CardType.Attack, "Scratch", 2, 1, 0, Random.Range(2, 13), 0));
-        playerDeck.Add(new PlayingCard(CardType.Attack, "Scratch", 2, 1, 0, Random.Range(2, 13), 0));
-        playerDeck.Add(new PlayingCard(CardType.Attack, "Scratch", 2, 1, 0, Random.Range(2, 13), 0));
-        playerDeck.Add(new PlayingCard(CardType.Attack, "Scratch", 2, 1, 0, Random.Range(2, 13), 0));
-        playerDeck.Add(new PlayingCard(CardType.Attack, "Scratch", 2, 1, 0, Random.Range(2, 13), 0));
-        playerDeck.Add(new PlayingCard(CardType.Block, "Block", 0, 2, 5, Random.Range(2, 13), 0));
-        playerDeck.Add(new PlayingCard(CardType.Block, "Block", 0, 2, 5, Random.Range(2, 13), 0));
-        playerDeck.Add(new PlayingCard(CardType.Block, "Block", 0, 2, 5, Random.Range(2, 13), 0));
-        playerDeck.Add(new PlayingCard(CardType.Block, "Block", 0, 2, 5, Random.Range(2, 13), 0));
-        playerDeck.Add(new PlayingCard(CardType.Block, "Block", 0, 2, 5, Random.Range(2, 13), 0));
+        playerDeck.Add(new PlayingCard(CardType.Attack, "Scratch", 2, 1, 0, Random.Range(2, 13), 0, ""));
+        playerDeck.Add(new PlayingCard(CardType.Attack, "Scratch", 2, 1, 0, Random.Range(2, 13), 0, ""));
+        playerDeck.Add(new PlayingCard(CardType.Attack, "Scratch", 2, 1, 0, Random.Range(2, 13), 0, ""));
+        playerDeck.Add(new PlayingCard(CardType.Attack, "Scratch", 2, 1, 0, Random.Range(2, 13), 0, ""));
+        playerDeck.Add(new PlayingCard(CardType.Attack, "Scratch", 2, 1, 0, Random.Range(2, 13), 0, ""));
+        playerDeck.Add(new PlayingCard(CardType.Block, "Block", 0, 2, 5, Random.Range(2, 13), 0, ""));
+        playerDeck.Add(new PlayingCard(CardType.Block, "Block", 0, 2, 5, Random.Range(2, 13), 0, ""));
+        playerDeck.Add(new PlayingCard(CardType.Block, "Block", 0, 2, 5, Random.Range(2, 13), 0, ""));
+        playerDeck.Add(new PlayingCard(CardType.Block, "Block", 0, 2, 5, Random.Range(2, 13), 0, ""));
+        playerDeck.Add(new PlayingCard(CardType.Block, "Block", 0, 2, 5, Random.Range(2, 13), 0, ""));
 
         foreach (PlayingCard card in playerDeck)
         {
@@ -124,14 +124,15 @@ public class CardManager : MonoBehaviour
         }
 
         // ATTACKING CARDS
-        uniqueCards.Add(new PlayingCard(CardType.Attack, "Tail Whip", 3, 1, 0, Random.Range(2, 13), 100));
-        uniqueCards.Add(new PlayingCard(CardType.Attack, "Pounce", 5, 3, 0, Random.Range(2, 13), 200));
+        uniqueCards.Add(new PlayingCard(CardType.Attack, "Tail Whip", 3, 1, 0, Random.Range(2, 13), 100, ""));
+        uniqueCards.Add(new PlayingCard(CardType.Attack, "Pounce", 5, 3, 0, Random.Range(2, 13), 200, ""));
+        uniqueCards.Add(new PlayingCard(CardType.Attack, "Hair Ball", 9, 7, 0, Random.Range(2, 13), 500, ""));
 
         // HEALING CARDS
-        uniqueCards.Add(new PlayingCard(CardType.Heal, "Drink Milk", 5, 2, 0, Random.Range(2, 13), 150));
+        uniqueCards.Add(new PlayingCard(CardType.Heal, "Drink Milk", 5, 2, 0, Random.Range(2, 13), 150, ""));
 
         //Blocking Cards
-        uniqueCards.Add(new PlayingCard(CardType.Block, "Knead", 0, 3, 8, Random.Range(2, 13), 250));
+        uniqueCards.Add(new PlayingCard(CardType.Block, "Knead", 0, 3, 8, Random.Range(2, 13), 250, ""));
     }
 
     public void AddNewCard(PlayingCard playinCard)
