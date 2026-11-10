@@ -6,6 +6,8 @@ public class HUDCanvas : MonoBehaviour
     private static HUDCanvas instance;
     public static HUDCanvas Instance { get { return instance; } }
 
+    public GameObject contextPrompt;
+
     private void Awake()
     {
         if (instance != null && instance != this)
