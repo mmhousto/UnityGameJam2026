@@ -57,13 +57,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.Health <= 0 && gameOver == false)
+        if (player.Health <= 0 && gameOver == false)
         {
             GameOver();
         }
 
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        if(enemyCount <= 0 && gameOver == false)
+        if (enemyCount <= 0 && gameOver == false)
         {
             GameWin();
         }
@@ -71,13 +71,13 @@ public class GameManager : MonoBehaviour
 
     void DrawCards(int draws)
     {
-        for(int i = 0; i < draws; i++)
+        for (int i = 0; i < draws; i++)
         {
             GameObject newCard = Instantiate(cardPrefab, playerHandObject);
             Card c = newCard.GetComponent<Card>();
 
             // Check if ran out of cards
-            if(currentDeck.Count <= 0)
+            if (currentDeck.Count <= 0)
             {
                 currentDeck.AddRange(discardPile); // Adds discard pile to deck
                 discardPile.Clear(); // clears discards pile
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     void ResetCardPosition()
     {
-        foreach(Card c in cardsInHand)
+        foreach (Card c in cardsInHand)
         {
             c.UpdateStartPosition();
         }
@@ -140,6 +140,21 @@ public class GameManager : MonoBehaviour
 
             Enemy enemyBeingHit = enemy.GetComponent<Enemy>();
             int incomingDamage = card.damage;
+
+            // The Box - 50% chance to hit enemy or you for 1/2 damage
+            if (card.cardName == "The Box")
+            {
+                float random = Random.Range(0, 1f);
+
+                if (random >= 0.5)
+                {
+
+                }
+                else
+                {
+                    incomingDamage /= 2;
+                }
+            }
 
             if (card.luckyNumber == player.luckyNumber)
             {
@@ -185,10 +200,30 @@ public class GameManager : MonoBehaviour
 
     public void HealPlayer(Card card)
     {
-        if(player.stamina >= card.stamina)
+        if (player.stamina >= card.stamina)
         {
             int incomingHealth = card.damage;
-            if (card.luckyNumber == player.luckyNumber)
+            if (card.cardName == "Curiosity")
+            {
+                if (card.luckyNumber == player.luckyNumber)
+                {
+                    player.TakeDamage(incomingHealth);
+                    AddRandomCard();
+                    AddRandomCard();
+                }
+                else if (card.luckyNumber + player.luckyNumber == 14)
+                {
+                    //player.TakeDamage(incomingHealth);
+                    AddRandomCard();
+                }
+                else
+                {
+                    player.TakeDamage(incomingHealth);
+                    AddRandomCard();
+
+                }
+            }
+            else if (card.luckyNumber == player.luckyNumber)
             {
                 incomingHealth *= 7;
                 player.TakeDamage(-incomingHealth);
@@ -266,7 +301,7 @@ public class GameManager : MonoBehaviour
         // Player Draws til 5 cards
         int numCardsInHand = cardsInHand.Count;
         int cardsToDraw = 5 - numCardsInHand;
-        if(cardsToDraw < 0) cardsToDraw = 0;
+        if (cardsToDraw < 0) cardsToDraw = 0;
         DrawCards(cardsToDraw);
         player.SetStamina(player.maxStamina);
     }
@@ -284,6 +319,21 @@ public class GameManager : MonoBehaviour
 
         // NEED TO MAKE THIS BETTER WITH OBJECT POOLING IF TIME PERMITS
         Destroy(card.gameObject);
+    }
+
+    private void AddRandomCard()
+    {
+        GameObject newCard = Instantiate(cardPrefab, playerHandObject);
+        Card c = newCard.GetComponent<Card>();
+
+        c.SetUpCard(CardManager.Instance.uniqueCards[Random.Range(0, CardManager.Instance.uniqueCards.Count)]);
+        cardsInHand.Add(c);
+        CardManager.Instance.AddNewCard(c.GetPlayingCard());
+
+        playerHand.Add(c.GetPlayingCard());
+
+        arrangePlayerHand.ArrangeChildren();
+        ResetCardPosition();
     }
 
     private void PerformEnemyAttacks()
