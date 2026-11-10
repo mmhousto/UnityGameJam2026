@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     public Transform playerHandObject;
     public GameObject gameOverScreen;
     public GameObject gameWinScreen;
+    public TextMeshProUGUI gameWinCoinsLbl;
+    public int coinsToAward;
 
     private bool gameOver;
     private int enemyCount;
@@ -47,6 +50,8 @@ public class GameManager : MonoBehaviour
         currentDeck = new List<PlayingCard>(cardManager.playerDeck);
         Shuffle(currentDeck);
         DrawCards(5);
+
+        gameWinCoinsLbl.text = $"You gained: {coinsToAward} Nip Coin";
     }
 
     // Update is called once per frame
@@ -317,7 +322,7 @@ public class GameManager : MonoBehaviour
 
     public void GameWin()
     {
-        Player.Instance.nipCoin += 250;
+        Player.Instance.nipCoin += coinsToAward;
         gameOver = true;
         gameWinScreen.SetActive(true);
     }
