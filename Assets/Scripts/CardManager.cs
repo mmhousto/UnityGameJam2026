@@ -131,7 +131,7 @@ public class CardManager : MonoBehaviour
 
         // HEALING CARDS
         uniqueCards.Add(new PlayingCard(CardType.Heal, "Drink Milk", 5, 2, 0, Random.Range(2, 13), 150, ""));
-        uniqueCards.Add(new PlayingCard(CardType.Heal, "Curiosity", -2, 5, 0, Random.Range(2, 13), 250, "Sacrifice 2 health for a random card"));
+        uniqueCards.Add(new PlayingCard(CardType.Heal, "Curiosity", -2, 5, 0, Random.Range(2, 13), 500, "Sacrifice 2 health for a random card"));
 
         //Blocking Cards
         uniqueCards.Add(new PlayingCard(CardType.Block, "Knead", 0, 3, 8, Random.Range(2, 13), 250, ""));

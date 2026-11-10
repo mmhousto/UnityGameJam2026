@@ -31,7 +31,7 @@ public class Card : MonoBehaviour
     {
         startPos = transform.position;
         baseScale = transform.localScale;
-        sprite = GetComponent<SpriteRenderer>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
         canvas = GetComponentInChildren<Canvas>();
     }
 
