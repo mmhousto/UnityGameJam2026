@@ -58,6 +58,8 @@ public class ShopCat : MonoBehaviour, IInteractable
 
     public void BuyCard()
     {
+        if(selectedCard == null) return;
+
         if(Player.Instance.nipCoin >= selectedCard.costToBuy)
         {
             Player.Instance.nipCoin -= selectedCard.costToBuy;
