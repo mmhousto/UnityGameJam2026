@@ -16,6 +16,7 @@ public class Card : MonoBehaviour
     public TextMeshProUGUI dmgHealBlockUI;
     public TextMeshProUGUI stamUI;
     public TextMeshProUGUI luckUI;
+    public TextMeshProUGUI infoUI;
 
     private PlayingCard playingCard;
     private GameObject collidingObject;
@@ -54,6 +55,10 @@ public class Card : MonoBehaviour
         else if(type == CardType.Block && dmgHealBlockUI.text != block.ToString())
             dmgHealBlockUI.text = block.ToString();
 
+        if(infoUI.text != playingCard.info)
+        {
+            infoUI.text = playingCard.info;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -160,7 +165,7 @@ public class Card : MonoBehaviour
         stamina = playingCard.stamina;
         block = playingCard.block;
         luckyNumber = playingCard.luckyNumber;
-
+        infoUI.text = playingCard.info;
     }
 
     public PlayingCard GetPlayingCard()
