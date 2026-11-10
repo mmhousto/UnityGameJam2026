@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 10f;
     public float maxSpeed = 4f;
-    public GameObject contextPrompt;
+    private Animator anim;
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     float xInput, yInput;
@@ -16,29 +16,23 @@ public class PlayerController : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
 
-        if(contextPrompt == null)
-        {
-            contextPrompt = GameObject.FindWithTag("ContextPrompt");
-        }
+        if(HUDCanvas.Instance != null )
+            HUDCanvas.Instance.contextPrompt.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (contextPrompt == null)
-        {
-            contextPrompt = GameObject.FindWithTag("ContextPrompt");
-        }
-
         MovePlayer();
         FlipSprite();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<IInteractable>(out IInteractable interactable) && contextPrompt != null)
-            contextPrompt.SetActive(true);
+        if(collision.TryGetComponent<IInteractable>(out IInteractable interactable) && HUDCanvas.Instance.contextPrompt != null)
+            HUDCanvas.Instance.contextPrompt.SetActive(true);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -49,8 +43,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<IInteractable>(out IInteractable interactable) && contextPrompt != null)
-            contextPrompt.SetActive(false);
+        if (collision.TryGetComponent<IInteractable>(out IInteractable interactable) && HUDCanvas.Instance.contextPrompt != null)
+            HUDCanvas.Instance.contextPrompt.SetActive(false);
     }
 
     private void FlipSprite()
@@ -64,6 +58,9 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
+        anim.SetFloat("xInput", xInput);
+        anim.SetFloat("yInput", yInput);
+
         Vector2 moveDir = new Vector2(xInput, yInput).normalized;
         rb.AddForce(moveDir * speed * Time.deltaTime, ForceMode2D.Impulse);
         rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, maxSpeed);

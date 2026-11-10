@@ -1612,6 +1612,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5552934028485985227, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+      propertyPath: contextPrompt
+      value: 
+      objectReference: {fileID: 949604346}
+    - target: {fileID: 7454961654098059053, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7454961654098059053, guid: e7d7ff191ae59724d8e9bfc80eaf9ecb, type: 3}
       propertyPath: m_TagString
       value: ContextPrompt
