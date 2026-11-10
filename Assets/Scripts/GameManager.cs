@@ -190,8 +190,23 @@ public class GameManager : MonoBehaviour
             int incomingHealth = card.damage;
             if (card.cardName == "Curiosity")
             {
-                player.TakeDamage(incomingHealth);
-                AddRandomCard();
+                if (card.luckyNumber == player.luckyNumber)
+                {
+                    player.TakeDamage(incomingHealth);
+                    AddRandomCard();
+                    AddRandomCard();
+                }
+                else if (card.luckyNumber + player.luckyNumber == 14)
+                {
+                    //player.TakeDamage(incomingHealth);
+                    AddRandomCard();
+                }
+                else
+                {
+                    player.TakeDamage(incomingHealth);
+                    AddRandomCard();
+
+                }
             }
             else if (card.luckyNumber == player.luckyNumber)
             {
