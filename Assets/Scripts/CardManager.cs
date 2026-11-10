@@ -87,6 +87,11 @@ public class CardManager : MonoBehaviour
 
     public void ResetCardManager()
     {
+        foreach(Card c in playerCards)
+        {
+            Destroy(c.gameObject);
+        }
+
         playerCards.Clear();
         playerDeck.Clear();
         uniqueCards.Clear();
