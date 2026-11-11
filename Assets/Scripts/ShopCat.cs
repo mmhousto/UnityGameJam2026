@@ -28,7 +28,7 @@ public class ShopCat : MonoBehaviour, IInteractable
         }
 
         costUI.text = $"Select a card to see the cost";
-        playersNipCoins.text = $"Nip Coin: {Player.Instance.nipCoin}";
+        playersNipCoins.text = $"{Player.Instance.nipCoin}";
 
         buyButton.onClick.AddListener(BuyCard);
         exitButton.onClick.AddListener(HideShopUI);
@@ -36,8 +36,8 @@ public class ShopCat : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        if(playersNipCoins.text != $"Nip Coin: {Player.Instance.nipCoin}")
-            playersNipCoins.text = $"Nip Coin: {Player.Instance.nipCoin}";
+        if(playersNipCoins.text != $"{Player.Instance.nipCoin}")
+            playersNipCoins.text = $"{Player.Instance.nipCoin}";
     }
 
     public void Interact()
@@ -64,6 +64,8 @@ public class ShopCat : MonoBehaviour, IInteractable
         {
             Player.Instance.nipCoin -= selectedCard.costToBuy;
             CardManager.Instance.AddNewCard(selectedCard);
+            PopUp.Instance.SetText($"Added {selectedCard.cardName} to your deck!");
+            PopUp.Instance.ShowPopUp();
         }
         else
         {
