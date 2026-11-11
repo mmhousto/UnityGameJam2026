@@ -19,6 +19,8 @@ public class ShopCat : MonoBehaviour, IInteractable
 
     public void Start()
     {
+        IsInteractable = true;
+
         foreach (PlayingCard card in CardManager.Instance.uniqueCards)
         {
             GameObject newCard = Instantiate(shopItem, shopContent.transform);

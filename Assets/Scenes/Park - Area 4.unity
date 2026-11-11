@@ -814,6 +814,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopCat
       objectReference: {fileID: 0}
+    - target: {fileID: 3294184747954568805, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.66
+      objectReference: {fileID: 0}
     - target: {fileID: 5813955567901736517, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
       propertyPath: costUI
       value: 
@@ -844,15 +848,15 @@ PrefabInstance:
       objectReference: {fileID: 1470868160}
     - target: {fileID: 6285905621876734304, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 6285905621876734304, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 6285905621876734304, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 6285905621876734304, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
       propertyPath: m_LocalPosition.x
