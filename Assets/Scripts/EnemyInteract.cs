@@ -8,6 +8,6 @@ public class EnemyInteract : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        SceneManager.LoadScene(sceneToLoad);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

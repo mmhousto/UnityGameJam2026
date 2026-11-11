@@ -368,6 +368,7 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         gameOverScreen.SetActive(true);
+        player.playerInfoHUD.SetActive(false);
     }
 
     public void GameWin()
@@ -375,6 +376,7 @@ public class GameManager : MonoBehaviour
         Player.Instance.nipCoin += coinsToAward;
         gameOver = true;
         gameWinScreen.SetActive(true);
+        player.playerInfoHUD.SetActive(false);
     }
 
     public void Restart()
