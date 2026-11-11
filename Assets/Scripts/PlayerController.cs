@@ -32,13 +32,21 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.TryGetComponent<IInteractable>(out IInteractable interactable) && HUDCanvas.Instance.contextPrompt != null)
-            HUDCanvas.Instance.contextPrompt.SetActive(true);
+        {
+            if(interactable.IsInteractable)
+                HUDCanvas.Instance.contextPrompt.SetActive(true);
+        }
+            
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.TryGetComponent<IInteractable>(out IInteractable interactable) && interacting)
-            interactable.Interact();
+        {
+            if (interactable.IsInteractable)
+                interactable.Interact();
+        }
+            
     }
 
     private void OnTriggerExit2D(Collider2D collision)
