@@ -13,6 +13,18 @@ public class CardManager : MonoBehaviour
     public GameObject hud;
     public GameObject viewDeckContent;
     public GameObject cardUI;
+    public Sprite scratch;
+    public Sprite block;
+    public Sprite tailWhip;
+    public Sprite pounce;
+    public Sprite drinkMilk;
+    public Sprite knead;
+    public Sprite hairBall;
+    public Sprite timCard;
+    public Sprite eightMore;
+    public Sprite theBox;
+    public Sprite curiosity;
+    public Sprite recklessLove;
 
     private void Awake()
     {
