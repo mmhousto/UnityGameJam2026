@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameWinCoinsLbl;
     public int coinsToAward;
 
+    private bool timCardInPlay;
     private bool gameOver;
     private int enemyCount;
     private List<PlayingCard> playerHand = new List<PlayingCard>();
@@ -262,6 +263,12 @@ public class GameManager : MonoBehaviour
         if (player.stamina >= card.stamina)
         {
             int incomingBlock = card.block;
+
+            if (card.cardName == "Tim's Card")
+            {
+                timCardInPlay = true;
+            }
+
             if (card.luckyNumber == player.luckyNumber)
             {
                 incomingBlock *= 7; // *7 block
@@ -343,6 +350,12 @@ public class GameManager : MonoBehaviour
         {
             //Checks if player has blocks
             int incomingDamage = enemy.GetCurrentHit();
+
+            if (timCardInPlay)
+            {
+                incomingDamage /= 2; // Half incoming damage
+            }
+
             if (incomingDamage > player.block)
             {
                 incomingDamage -= player.block;
@@ -363,6 +376,8 @@ public class GameManager : MonoBehaviour
             // Enemy Displays Next Hit
             enemy.GetNextHit();
         }
+
+        timCardInPlay = false;
     }
 
     public void GameOver()

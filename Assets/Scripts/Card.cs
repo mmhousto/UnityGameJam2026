@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Card : MonoBehaviour
     public TextMeshProUGUI stamUI;
     public TextMeshProUGUI luckUI;
     public TextMeshProUGUI infoUI;
+    public Image image;
 
     private PlayingCard playingCard;
     private GameObject collidingObject;
@@ -166,6 +168,46 @@ public class Card : MonoBehaviour
         block = playingCard.block;
         luckyNumber = playingCard.luckyNumber;
         infoUI.text = playingCard.info;
+
+        switch (cardName)
+        {
+            case "Scratch":
+                image.sprite = CardManager.Instance.scratch;
+                break;
+            case "Block":
+                image.sprite = CardManager.Instance.block;
+                break;
+            case "Tail Whip":
+                image.sprite = CardManager.Instance.tailWhip;
+                break;
+            case "Pounce":
+                image.sprite = CardManager.Instance.pounce;
+                break;
+            case "Drink Milk":
+                image.sprite = CardManager.Instance.drinkMilk;
+                break;
+            case "Knead":
+                image.sprite = CardManager.Instance.knead;
+                break;
+            case "Hair Ball":
+                image.sprite = CardManager.Instance.hairBall;
+                break;
+            case "Tim's Card":
+                image.sprite = CardManager.Instance.timCard;
+                break;
+            case "8 More":
+                image.sprite = CardManager.Instance.eightMore;
+                break;
+            case "The Box":
+                image.sprite = CardManager.Instance.theBox;
+                break;
+            case "Curiosity":
+                image.sprite = CardManager.Instance.curiosity;
+                break;
+            case "Reckless Love":
+                image.sprite = CardManager.Instance.recklessLove;
+                break;
+        }
     }
 
     public PlayingCard GetPlayingCard()
