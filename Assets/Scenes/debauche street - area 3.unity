@@ -726,6 +726,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopCat
       objectReference: {fileID: 0}
+    - target: {fileID: 3294184747954568805, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
+      propertyPath: m_Offset.y
+      value: -5.43
+      objectReference: {fileID: 0}
     - target: {fileID: 5813955567901736517, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
       propertyPath: costUI
       value: 
@@ -756,15 +760,31 @@ PrefabInstance:
       objectReference: {fileID: 153726876}
     - target: {fileID: 6180334057707693119, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
       propertyPath: m_Radius
-      value: 4
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180334057707693119, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
+      propertyPath: m_Offset.y
+      value: -3.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285905621876734304, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285905621876734304, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285905621876734304, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 6285905621876734304, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 335.84
+      value: 335.75
       objectReference: {fileID: 0}
     - target: {fileID: 6285905621876734304, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.3
+      value: -7.88
       objectReference: {fileID: 0}
     - target: {fileID: 6285905621876734304, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -797,6 +817,10 @@ PrefabInstance:
     - target: {fileID: 6285905621876734304, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982295285888352814, guid: bf44f85e4f73a3449a5913067db61da2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("PlayerData").GetComponent<Player>();
         cardManager = GameObject.FindWithTag("CardManager").GetComponent<CardManager>();
         player.playerInfoHUD.SetActive(true);
+        player.SetStamina(player.maxStamina);
         currentDeck = new List<PlayingCard>(cardManager.playerDeck);
         Shuffle(currentDeck);
         DrawCards(5);
