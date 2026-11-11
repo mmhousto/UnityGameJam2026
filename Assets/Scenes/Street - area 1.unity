@@ -2705,6 +2705,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thirteen
       objectReference: {fileID: 0}
+    - target: {fileID: 5900731345360271633, guid: acc85b8e98ff22645bfa8a40a2d03364, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7957823308291611727, guid: acc85b8e98ff22645bfa8a40a2d03364, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -2974,6 +2978,7 @@ GameObject:
   - component: {fileID: 1615598964}
   - component: {fileID: 1615598963}
   - component: {fileID: 1615598967}
+  - component: {fileID: 1615598968}
   m_Layer: 3
   m_Name: Tim
   m_TagString: Untagged
@@ -3024,7 +3029,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615598962}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -3140,6 +3145,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tim
   canInteract: 1
+  hint: {fileID: 8300000, guid: 8394391606ab1d547862f9dda729d866, type: 3}
+  timVO: {fileID: 8300000, guid: ed7dd9c5f2dadea4b80c945402e5527d, type: 3}
+  promptCollider: {fileID: 1615598964}
+--- !u!61 &1615598968
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615598962}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 3.692388, y: -1.279705}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.07, y: 2.31}
+    newSize: {x: 2.07, y: 2.31}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 10.809665, y: 13.522657}
+  m_EdgeRadius: 0
 --- !u!1001 &1624053875
 PrefabInstance:
   m_ObjectHideFlags: 0
