@@ -15,7 +15,10 @@ public class ShopCat : MonoBehaviour, IInteractable
     public TextMeshProUGUI costUI;
     public Button buyButton;
     public Button exitButton;
+    public GameObject cutsceneDirector;
+    public bool hasCutscene;
     private PlayingCard selectedCard;
+    private bool cutscenePlayed;
 
     public void Start()
     {
@@ -49,6 +52,11 @@ public class ShopCat : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if(cutscenePlayed == false && hasCutscene)
+        {
+            cutsceneDirector.SetActive(true);
+            cutscenePlayed = true;
+        }
         shopUI.SetActive(true);
     }
 
