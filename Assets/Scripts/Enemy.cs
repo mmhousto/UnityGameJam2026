@@ -102,12 +102,16 @@ public class Enemy : MonoBehaviour, IDamagable
             block += 7;
             TakeDamage(-7);
             baseDamage += 7;
+
+            GameManager.Instance?.ShowEnemyFeedback("Enemy Lucky Hit!", $"Rolled: {roll}\n{nextAttackDmg} Damage\n+7 Block\n+7 Health\n+7 Base Damage");
         }
         else if (sum == 14)
         {
             nextAttackDmg += 7 + roll;
             block += 7;
             TakeDamage(-7);
+
+            GameManager.Instance?.ShowEnemyFeedback("Enemy Inverted Lucky!", $"Rolled: {roll}\n{nextAttackDmg} Damage\n+7 Block\n+7 Health");
         }
         else
         {
@@ -122,14 +126,19 @@ public class Enemy : MonoBehaviour, IDamagable
             {
                 case 0://Attack
                     nextAttackDmg += roll;
+
+                    GameManager.Instance?.ShowEnemyFeedback("Enemy Attack!", $"Rolled: {roll}\n{nextAttackDmg} Damage");
                     Debug.Log("Enemy Attack");
                     break;
                 case 1://Block
                     block += roll;
+
+                    GameManager.Instance?.ShowEnemyFeedback("Enemy Block!", $"+{roll} Block");
                     Debug.Log("Enemy Block");
                     break;
                 case 2://Heal
                     TakeDamage(-roll);
+                    GameManager.Instance?.ShowEnemyFeedback("Enemy Heal!", $"+{roll} Heal");
                     Debug.Log("Enemy Heal");
                     break;
 
