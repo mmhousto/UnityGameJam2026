@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,15 @@ public class MainManager : MonoBehaviour
         master.value = AudioManager.Instance.GetMasterVolume();
         music.value = AudioManager.Instance.GetMusicVolume();
         sfx.value = AudioManager.Instance.GetSFXVolume();
+    }
+
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
     }
 
     public void SetMasterVolume(float soundLevel)

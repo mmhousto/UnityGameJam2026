@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public Transform playerHandObject;
     public GameObject gameOverScreen;
     public GameObject gameWinScreen;
+    public GameObject playerFeedback;
+    public TextMeshProUGUI feedbackRollType;
+    public TextMeshProUGUI feedbackEffects;
     public TextMeshProUGUI gameWinCoinsLbl;
     public int coinsToAward;
 
@@ -49,7 +52,7 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("PlayerData").GetComponent<Player>();
         cardManager = GameObject.FindWithTag("CardManager").GetComponent<CardManager>();
         audioManager = AudioManager.Instance;
-
+        playerFeedback.SetActive(false);
         player.playerInfoHUD.SetActive(true);
         player.SetStamina(player.maxStamina);
         currentDeck = new List<PlayingCard>(cardManager.playerDeck);
@@ -158,11 +161,17 @@ public class GameManager : MonoBehaviour
 
                 if (random >= 0.5)
                 {
-
+                    //NEED TO FIX/ADD
+                    
                 }
                 else
                 {
                     incomingDamage /= 2;
+                    player.TakeDamage(incomingDamage);
+                    playerFeedback.SetActive(true);
+                    feedbackRollType.text = "Unlucky!";
+                    feedbackEffects.text = $"Damaged yourself for\n{incomingDamage} Damage";
+                    return;
                 }
             }
 
@@ -177,12 +186,27 @@ public class GameManager : MonoBehaviour
                 card.damage += 3;
                 card.GetPlayingCard().damage = card.damage;
                 cardManager.UpdateDamage(card.GetPlayingCard(), card.damage);
+
+                playerFeedback.SetActive(true);
+                feedbackRollType.text = "Lucky Hit!";
+                feedbackEffects.text = $"{incomingDamage} Damage\n+7 Health\n+7 Block\n+1 Max Stamina\n+3 Base Damage";
             }
             else if (card.luckyNumber + player.luckyNumber == 14)
             {
                 incomingDamage += 7;
                 player.TakeDamage(-7);
                 player.block += 7;
+
+                playerFeedback.SetActive(true);
+                feedbackRollType.text = "Inverted Lucky!";
+                feedbackEffects.text = $"{incomingDamage} Damage\n+7 Health\n+7 Block";
+            }
+            else
+            {
+                playerFeedback.SetActive(true);
+                feedbackRollType.text = "Base Damage";
+                feedbackEffects.text = $"{incomingDamage} Damage";
+
             }
 
             // Can Enemy Block
@@ -205,6 +229,7 @@ public class GameManager : MonoBehaviour
         else
         {
             card.SetToStartPosition();
+            playerFeedback.SetActive(false);
         }
     }
 
@@ -217,20 +242,31 @@ public class GameManager : MonoBehaviour
             {
                 if (card.luckyNumber == player.luckyNumber)
                 {
-                    player.TakeDamage(incomingHealth);
+                    //player.TakeDamage(incomingHealth);
                     AddRandomCard();
                     AddRandomCard();
+
+                    playerFeedback.SetActive(true);
+                    feedbackRollType.text = "Lucky Hit!";
+                    feedbackEffects.text = $"Negates Health Loss\n+2 Random Cards";
                 }
                 else if (card.luckyNumber + player.luckyNumber == 14)
                 {
                     //player.TakeDamage(incomingHealth);
                     AddRandomCard();
+
+                    playerFeedback.SetActive(true);
+                    feedbackRollType.text = "Inverted Lucky!";
+                    feedbackEffects.text = $"Negates Health Loss\n+1 Random Card";
                 }
                 else
                 {
                     player.TakeDamage(incomingHealth);
                     AddRandomCard();
 
+                    playerFeedback.SetActive(true);
+                    feedbackRollType.text = "Base Heal";
+                    feedbackEffects.text = $"-{incomingHealth} Health\n+1 Random Card";
                 }
             }
             else if (card.luckyNumber == player.luckyNumber)
@@ -244,15 +280,26 @@ public class GameManager : MonoBehaviour
                 card.damage += 3;
                 card.GetPlayingCard().damage = card.damage;
                 cardManager.UpdateDamage(card.GetPlayingCard(), card.damage);
+
+                playerFeedback.SetActive(true);
+                feedbackRollType.text = "Lucky Hit!";
+                feedbackEffects.text = $"+{incomingHealth} Health\n+7 Block\n+1 Max Stamina\n+3 Base Heal";
             }
             else if (card.luckyNumber + player.luckyNumber == 14)
             {
                 incomingHealth += 7;
                 player.TakeDamage(-incomingHealth);
                 player.AddBlock(7);
+
+                playerFeedback.SetActive(true);
+                feedbackRollType.text = "Inverted Lucky!";
+                feedbackEffects.text = $"+{incomingHealth} Health\n+7 Block";
             }
             else
             {
+                playerFeedback.SetActive(true);
+                feedbackRollType.text = "Base Heal";
+                feedbackEffects.text = $"+{incomingHealth} Health";
                 player.TakeDamage(-card.damage);
             }
 
@@ -262,6 +309,7 @@ public class GameManager : MonoBehaviour
         else
         {
             card.SetToStartPosition();
+            playerFeedback.SetActive(false);
         }
 
     }
@@ -288,15 +336,26 @@ public class GameManager : MonoBehaviour
                 card.block += 3;
                 card.GetPlayingCard().block = card.block;
                 cardManager.UpdateBlock(card.GetPlayingCard(), card.block);
+
+                playerFeedback.SetActive(true);
+                feedbackRollType.text = "Lucky Hit!";
+                feedbackEffects.text = $"+{incomingBlock} Block\n+7 Health\n+1 Max Stamina\n+3 Base Block";
             }
             else if (card.luckyNumber + player.luckyNumber == 14)
             {
                 incomingBlock += 7;
                 player.TakeDamage(-7);
                 player.AddBlock(incomingBlock);
+
+                playerFeedback.SetActive(true);
+                feedbackRollType.text = "Inverted Lucky!";
+                feedbackEffects.text = $"+{incomingBlock} Block\n+7 Heal";
             }
             else
             {
+                playerFeedback.SetActive(true);
+                feedbackRollType.text = "Base Block!";
+                feedbackEffects.text = $"+{incomingBlock} Block";
                 player.AddBlock(card.block);
             }
 
@@ -306,11 +365,13 @@ public class GameManager : MonoBehaviour
         else
         {
             card.SetToStartPosition();
+            playerFeedback.SetActive(false);
         }
     }
 
     public void EndTurn()
     {
+        playerFeedback.SetActive(false);
         // Enemy Attacks
         PerformEnemyAttacks();
 
@@ -366,7 +427,11 @@ public class GameManager : MonoBehaviour
 
             if (timCardInPlay)
             {
+                timCardInPlay = false;
                 incomingDamage /= 2; // Half incoming damage
+                playerFeedback.SetActive(true);
+                feedbackRollType.text = "Enemy Attack!";
+                feedbackEffects.text = $"Tim's presence weakens the attack\n{incomingDamage} Damage";
             }
 
             if (incomingDamage > player.block)
@@ -399,6 +464,7 @@ public class GameManager : MonoBehaviour
         gameOverScreen.SetActive(true);
         player.playerInfoHUD.SetActive(false);
         HUDCanvas.Instance?.viewDeckButton.SetActive(false);
+        playerFeedback.SetActive(false);
     }
 
     public void GameWin()
@@ -407,6 +473,7 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         gameWinScreen.SetActive(true);
         player.playerInfoHUD.SetActive(false);
+        playerFeedback.SetActive(false);
     }
 
     public void Restart()
@@ -424,5 +491,23 @@ public class GameManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         audioManager.sfxSource.PlayOneShot(clip);
+    }
+
+    public void ShowEnemyFeedback(string type, string textToDisplay)
+    {
+        playerFeedback.SetActive(true);
+        feedbackRollType.color = Color.red;
+        feedbackEffects.color = Color.red;
+        feedbackRollType.text = type;
+        feedbackEffects.text = textToDisplay;
+    }
+
+    public void ShowPlayerFeedback(string type, string textToDisplay)
+    {
+        playerFeedback.SetActive(true);
+        feedbackRollType.color = Color.green;
+        feedbackEffects.color = Color.green;
+        feedbackRollType.text = type;
+        feedbackEffects.text = textToDisplay;
     }
 }

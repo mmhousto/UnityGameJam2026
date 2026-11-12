@@ -44,3 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464731a3546a67f4387b64456dd21c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  player: {fileID: 0}
+  cardManager: {fileID: 0}
+  enemies:
+  - {fileID: 0}
+  cardPrefab: {fileID: 7236669772850610236, guid: 2c3e8a17eb1fe474d9a1a5951cbacd08, type: 3}
+  playerHandObject: {fileID: 0}
+  gameOverScreen: {fileID: 0}
+  gameWinScreen: {fileID: 0}
+  playerFeedback: {fileID: 0}
+  feedbackRollType: {fileID: 0}
+  feedbackEffects: {fileID: 0}
+  gameWinCoinsLbl: {fileID: 0}
+  coinsToAward: 150
