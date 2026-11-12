@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("PlayerData").GetComponent<Player>();
         cardManager = GameObject.FindWithTag("CardManager").GetComponent<CardManager>();
         audioManager = AudioManager.Instance;
-        playerFeedback.SetActive(false);
+        //playerFeedback.SetActive(false);
         player.playerInfoHUD.SetActive(true);
         player.SetStamina(player.maxStamina);
         currentDeck = new List<PlayingCard>(cardManager.playerDeck);
