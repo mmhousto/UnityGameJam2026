@@ -1399,6 +1399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Card
   type: 0
   cardName: 
+  chineseName: 
   damage: 0
   stamina: 0
   block: 0
@@ -1406,6 +1407,7 @@ MonoBehaviour:
   uiCard: 0
   typeUI: {fileID: 9062650535813417520}
   nameUI: {fileID: 8497264876659514063}
+  chineseNameUI: {fileID: 2335013592907050515}
   dmgHealBlockUI: {fileID: 3116979557958305062}
   stamUI: {fileID: 4508258509465479378}
   luckUI: {fileID: 4815482055226884451}
