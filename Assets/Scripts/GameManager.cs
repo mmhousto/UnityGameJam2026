@@ -168,9 +168,8 @@ public class GameManager : MonoBehaviour
                 {
                     incomingDamage /= 2;
                     player.TakeDamage(incomingDamage);
-                    playerFeedback.SetActive(true);
-                    feedbackRollType.text = "Unlucky!";
-                    feedbackEffects.text = $"Damaged yourself for\n{incomingDamage} Damage";
+                    
+                    ShowPlayerFeedback("Unlucky!", $"Damaged yourself for\n{incomingDamage} Damage");
                     return;
                 }
             }
@@ -187,9 +186,7 @@ public class GameManager : MonoBehaviour
                 card.GetPlayingCard().damage = card.damage;
                 cardManager.UpdateDamage(card.GetPlayingCard(), card.damage);
 
-                playerFeedback.SetActive(true);
-                feedbackRollType.text = "Lucky Hit!";
-                feedbackEffects.text = $"{incomingDamage} Damage\n+7 Health\n+7 Block\n+1 Max Stamina\n+3 Base Damage";
+                ShowPlayerFeedback("Lucky Hit!", $"{incomingDamage} Damage\n+7 Health\n+7 Block\n+1 Max Stamina\n+3 Base Damage");
             }
             else if (card.luckyNumber + player.luckyNumber == 14)
             {
@@ -197,16 +194,11 @@ public class GameManager : MonoBehaviour
                 player.TakeDamage(-7);
                 player.block += 7;
 
-                playerFeedback.SetActive(true);
-                feedbackRollType.text = "Inverted Lucky!";
-                feedbackEffects.text = $"{incomingDamage} Damage\n+7 Health\n+7 Block";
+                ShowPlayerFeedback("Inverted Lucky!", $"{incomingDamage} Damage\n+7 Health\n+7 Block");
             }
             else
             {
-                playerFeedback.SetActive(true);
-                feedbackRollType.text = "Base Damage";
-                feedbackEffects.text = $"{incomingDamage} Damage";
-
+                ShowPlayerFeedback("Base Damage", $"{incomingDamage} Damage");
             }
 
             // Can Enemy Block
@@ -246,27 +238,21 @@ public class GameManager : MonoBehaviour
                     AddRandomCard();
                     AddRandomCard();
 
-                    playerFeedback.SetActive(true);
-                    feedbackRollType.text = "Lucky Hit!";
-                    feedbackEffects.text = $"Negates Health Loss\n+2 Random Cards";
+                    ShowPlayerFeedback("Lucky Hit!", $"Negates Health Loss\n+2 Random Cards");
                 }
                 else if (card.luckyNumber + player.luckyNumber == 14)
                 {
                     //player.TakeDamage(incomingHealth);
                     AddRandomCard();
 
-                    playerFeedback.SetActive(true);
-                    feedbackRollType.text = "Inverted Lucky!";
-                    feedbackEffects.text = $"Negates Health Loss\n+1 Random Card";
+                    ShowPlayerFeedback("Inverted Lucky!", $"Negates Health Loss\n+1 Random Card");
                 }
                 else
                 {
                     player.TakeDamage(incomingHealth);
                     AddRandomCard();
 
-                    playerFeedback.SetActive(true);
-                    feedbackRollType.text = "Base Heal";
-                    feedbackEffects.text = $"-{incomingHealth} Health\n+1 Random Card";
+                    ShowPlayerFeedback("Base Heal", $"-{incomingHealth} Health\n+1 Random Card");
                 }
             }
             else if (card.luckyNumber == player.luckyNumber)
@@ -281,9 +267,7 @@ public class GameManager : MonoBehaviour
                 card.GetPlayingCard().damage = card.damage;
                 cardManager.UpdateDamage(card.GetPlayingCard(), card.damage);
 
-                playerFeedback.SetActive(true);
-                feedbackRollType.text = "Lucky Hit!";
-                feedbackEffects.text = $"+{incomingHealth} Health\n+7 Block\n+1 Max Stamina\n+3 Base Heal";
+                ShowPlayerFeedback("Lucky Hit!", $"+{incomingHealth} Health\n+7 Block\n+1 Max Stamina\n+3 Base Heal");
             }
             else if (card.luckyNumber + player.luckyNumber == 14)
             {
@@ -291,15 +275,11 @@ public class GameManager : MonoBehaviour
                 player.TakeDamage(-incomingHealth);
                 player.AddBlock(7);
 
-                playerFeedback.SetActive(true);
-                feedbackRollType.text = "Inverted Lucky!";
-                feedbackEffects.text = $"+{incomingHealth} Health\n+7 Block";
+                ShowPlayerFeedback("Inverted Lucky!", $"+{incomingHealth} Health\n+7 Block");
             }
             else
             {
-                playerFeedback.SetActive(true);
-                feedbackRollType.text = "Base Heal";
-                feedbackEffects.text = $"+{incomingHealth} Health";
+                ShowPlayerFeedback("Base Heal", $"+{incomingHealth} Health");
                 player.TakeDamage(-card.damage);
             }
 
@@ -337,9 +317,7 @@ public class GameManager : MonoBehaviour
                 card.GetPlayingCard().block = card.block;
                 cardManager.UpdateBlock(card.GetPlayingCard(), card.block);
 
-                playerFeedback.SetActive(true);
-                feedbackRollType.text = "Lucky Hit!";
-                feedbackEffects.text = $"+{incomingBlock} Block\n+7 Health\n+1 Max Stamina\n+3 Base Block";
+                ShowPlayerFeedback("Lucky Hit!", $"+{incomingBlock} Block\n+7 Health\n+1 Max Stamina\n+3 Base Block");
             }
             else if (card.luckyNumber + player.luckyNumber == 14)
             {
@@ -347,15 +325,11 @@ public class GameManager : MonoBehaviour
                 player.TakeDamage(-7);
                 player.AddBlock(incomingBlock);
 
-                playerFeedback.SetActive(true);
-                feedbackRollType.text = "Inverted Lucky!";
-                feedbackEffects.text = $"+{incomingBlock} Block\n+7 Heal";
+                ShowPlayerFeedback("Inverted Lucky!", $"+{incomingBlock} Block\n+7 Heal");
             }
             else
             {
-                playerFeedback.SetActive(true);
-                feedbackRollType.text = "Base Block!";
-                feedbackEffects.text = $"+{incomingBlock} Block";
+                ShowPlayerFeedback("Base Block!", $"+{incomingBlock} Block");
                 player.AddBlock(card.block);
             }
 
@@ -429,9 +403,8 @@ public class GameManager : MonoBehaviour
             {
                 timCardInPlay = false;
                 incomingDamage /= 2; // Half incoming damage
-                playerFeedback.SetActive(true);
-                feedbackRollType.text = "Enemy Attack!";
-                feedbackEffects.text = $"Tim's presence weakens the attack\n{incomingDamage} Damage";
+                
+                ShowEnemyFeedback("Enemy Attack!", $"Tim's presence weakens the attack\n{incomingDamage} Damage");
             }
 
             if (incomingDamage > player.block)
