@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -119,7 +120,7 @@ public class GameManager : MonoBehaviour
         for (int i = n - 1; i > 0; i--)
         {
             // gets random card
-            int rng = Random.Range(0, i + 1);
+            int rng = UnityEngine.Random.Range(0, i + 1);
 
             audioManager?.sfxSource.PlayOneShot(audioManager?.drawCard);
 
@@ -157,7 +158,7 @@ public class GameManager : MonoBehaviour
             // The Box - 50% chance to hit enemy or you for 1/2 damage
             if (card.cardName == "The Box")
             {
-                float random = Random.Range(0, 1f);
+                float random = UnityEngine.Random.Range(0, 1f);
 
                 if (random >= 0.5)
                 {
@@ -303,6 +304,7 @@ public class GameManager : MonoBehaviour
             if (card.cardName == "Tim's Card")
             {
                 timCardInPlay = true;
+                enemies[0].nextDmgLbl.text = (Convert.ToInt32(enemies[0].nextDmgLbl.text)/2).ToString();
             }
 
             if (card.luckyNumber == player.luckyNumber)
@@ -317,7 +319,10 @@ public class GameManager : MonoBehaviour
                 card.GetPlayingCard().block = card.block;
                 cardManager.UpdateBlock(card.GetPlayingCard(), card.block);
 
-                ShowPlayerFeedback("Lucky Hit!", $"+{incomingBlock} Block\n+7 Health\n+1 Max Stamina\n+3 Base Block");
+                if (timCardInPlay)
+                    ShowPlayerFeedback("Lucky Hit!", $"Tim's presence weakens the Enemy\n+{incomingBlock} Block\n+7 Health\n+1 Max Stamina\n+3 Base Block");
+                else
+                    ShowPlayerFeedback("Lucky Hit!", $"+{incomingBlock} Block\n+7 Health\n+1 Max Stamina\n+3 Base Block");
             }
             else if (card.luckyNumber + player.luckyNumber == 14)
             {
@@ -325,11 +330,17 @@ public class GameManager : MonoBehaviour
                 player.TakeDamage(-7);
                 player.AddBlock(incomingBlock);
 
-                ShowPlayerFeedback("Inverted Lucky!", $"+{incomingBlock} Block\n+7 Heal");
+                if (timCardInPlay)
+                    ShowPlayerFeedback("Inverted!", $"Tim's presence weakens the Enemy\n+{incomingBlock} Block\n+7 Heal");
+                else
+                    ShowPlayerFeedback("Inverted Lucky!", $"+{incomingBlock} Block\n+7 Heal");
             }
             else
             {
-                ShowPlayerFeedback("Base Block!", $"+{incomingBlock} Block");
+                if (timCardInPlay)
+                    ShowPlayerFeedback("Base Block!", $"Tim's presence weakens the Enemy\n+{incomingBlock} Block");
+                else
+                    ShowPlayerFeedback("Base Block!", $"+{incomingBlock} Block");
                 player.AddBlock(card.block);
             }
 
@@ -359,7 +370,7 @@ public class GameManager : MonoBehaviour
 
     private void DiscardCard(Card card)
     {
-        int newLuck = Random.Range(2, 13);
+        int newLuck = UnityEngine.Random.Range(2, 13);
         cardManager.UpdateLuckyNumber(card.GetPlayingCard(), newLuck);
         card.GetNewLuckyNumber(newLuck); // Gets new Lucky Number
         // ADD TO DISCARD PILE
@@ -380,7 +391,7 @@ public class GameManager : MonoBehaviour
         GameObject newCard = Instantiate(cardPrefab, playerHandObject);
         Card c = newCard.GetComponent<Card>();
 
-        c.SetUpCard(CardManager.Instance.uniqueCards[Random.Range(0, CardManager.Instance.uniqueCards.Count)]);
+        c.SetUpCard(CardManager.Instance.uniqueCards[UnityEngine.Random.Range(0, CardManager.Instance.uniqueCards.Count)]);
         cardsInHand.Add(c);
         CardManager.Instance.AddNewCard(c.GetPlayingCard());
 
@@ -403,8 +414,6 @@ public class GameManager : MonoBehaviour
             {
                 timCardInPlay = false;
                 incomingDamage /= 2; // Half incoming damage
-                
-                ShowEnemyFeedback("Enemy Attack!", $"Tim's presence weakens the attack\n{incomingDamage} Damage");
             }
 
             if (incomingDamage > player.block)
