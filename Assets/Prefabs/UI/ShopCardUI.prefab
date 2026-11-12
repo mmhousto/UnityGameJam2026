@@ -232,7 +232,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10.05
+  m_fontSize: 8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -377,6 +377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Card
   type: 0
   cardName: 
+  chineseName: 
   damage: 0
   stamina: 0
   block: 0
@@ -384,6 +385,7 @@ MonoBehaviour:
   uiCard: 1
   typeUI: {fileID: 8084435087147307232}
   nameUI: {fileID: 8758495251845365654}
+  chineseNameUI: {fileID: 3628770128374231712}
   dmgHealBlockUI: {fileID: 4731888338534449972}
   stamUI: {fileID: 5946969126801839126}
   luckUI: {fileID: 2015663440226084743}
@@ -1249,7 +1251,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.2
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

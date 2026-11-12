@@ -6,6 +6,7 @@ public class Card : MonoBehaviour
 {
     public CardType type;
     public string cardName;
+    public string chineseName;
     public int damage;
     public int stamina;
     public int block;
@@ -14,6 +15,7 @@ public class Card : MonoBehaviour
 
     public TextMeshProUGUI typeUI;
     public TextMeshProUGUI nameUI;
+    public TextMeshProUGUI chineseNameUI;
     public TextMeshProUGUI dmgHealBlockUI;
     public TextMeshProUGUI stamUI;
     public TextMeshProUGUI luckUI;
@@ -45,6 +47,9 @@ public class Card : MonoBehaviour
 
         if (nameUI.text != cardName)
             nameUI.text = cardName;
+
+        if(chineseNameUI.text != chineseName)
+            chineseNameUI.text = chineseName;
 
         if (stamUI.text != stamina.ToString())
             stamUI.text = stamina.ToString();
@@ -162,6 +167,7 @@ public class Card : MonoBehaviour
         playingCard = card;
         type = playingCard.type;
         name = playingCard.cardName;
+        chineseName = playingCard.chineseName;
         cardName = playingCard.cardName;
         damage = playingCard.damage;
         stamina = playingCard.stamina;
