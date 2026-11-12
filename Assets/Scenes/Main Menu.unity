@@ -3020,6 +3020,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1732063166}
+  - {fileID: 1972138843}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1971879659
@@ -3138,6 +3139,10 @@ MonoBehaviour:
   overWorld: {fileID: 8300000, guid: f8c8283a1af443c448a640125d09746c, type: 3}
   battle: {fileID: 8300000, guid: 2e72af90dc21cd444bb17e8c0829414a, type: 3}
   uiClick: {fileID: 8300000, guid: 88a9128f165f39440a0adabc231fda41, type: 3}
+  collectItem: {fileID: 8300000, guid: d744890884ebf1c46938364cb28c5c02, type: 3}
+  drawCard: {fileID: 8300000, guid: a0e6998513fd7744f8cda378b45fe2c1, type: 3}
+  metalPipe: {fileID: 8300000, guid: 1dc74747a85c6ca4682b4599e5c4e56f, type: 3}
+  playerAttack: {fileID: 8300000, guid: f9711b522edaeef45830239ec8e61019, type: 3}
 --- !u!1 &1972138840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3210,12 +3215,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972138840}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1971879658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2009205699
 GameObject:
@@ -3611,7 +3616,6 @@ SceneRoots:
   - {fileID: 1253240947}
   - {fileID: 1947677859}
   - {fileID: 1323621667}
-  - {fileID: 1972138843}
   - {fileID: 311748129}
   - {fileID: 1563339264}
   - {fileID: 1971879658}

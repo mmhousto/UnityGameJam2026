@@ -8,6 +8,7 @@ public class PopUp : MonoBehaviour
 
     public GameObject popUpPanel;
     public TextMeshProUGUI popUpText;
+    public AudioClip popUpSound;
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class PopUp : MonoBehaviour
     public void ShowPopUp()
     {
         popUpPanel.SetActive(true);
+        AudioManager.Instance?.sfxSource.PlayOneShot(popUpSound);
     }
 
     private void Update()

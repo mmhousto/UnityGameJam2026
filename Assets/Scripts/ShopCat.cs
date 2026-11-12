@@ -42,6 +42,11 @@ public class ShopCat : MonoBehaviour, IInteractable
             playersNipCoins.text = $"{Player.Instance.nipCoin}";
     }
 
+    public void PlaySFX(AudioClip clip)
+    {
+        AudioManager.Instance.sfxSource.PlayOneShot(clip);
+    }
+
     public void Interact()
     {
         shopUI.SetActive(true);

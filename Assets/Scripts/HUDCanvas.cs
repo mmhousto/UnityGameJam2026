@@ -7,6 +7,7 @@ public class HUDCanvas : MonoBehaviour
     public static HUDCanvas Instance { get { return instance; } }
 
     public GameObject contextPrompt;
+    public GameObject viewDeckButton;
 
     private void Awake()
     {
@@ -20,15 +21,8 @@ public class HUDCanvas : MonoBehaviour
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void PlaySFX(AudioClip clip)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        AudioManager.Instance.sfxSource.PlayOneShot(clip);
     }
 }

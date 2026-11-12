@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameWinCoinsLbl;
     public int coinsToAward;
 
+    private AudioManager audioManager;
     private bool timCardInPlay;
     private bool gameOver;
     private int enemyCount;
@@ -47,6 +48,8 @@ public class GameManager : MonoBehaviour
         arrangePlayerHand = playerHandObject.GetComponent<ArrangePlayerHand>();
         player = GameObject.FindWithTag("PlayerData").GetComponent<Player>();
         cardManager = GameObject.FindWithTag("CardManager").GetComponent<CardManager>();
+        audioManager = AudioManager.Instance;
+
         player.playerInfoHUD.SetActive(true);
         player.SetStamina(player.maxStamina);
         currentDeck = new List<PlayingCard>(cardManager.playerDeck);
@@ -86,6 +89,8 @@ public class GameManager : MonoBehaviour
                 Shuffle(currentDeck); // shuffle deck
             }
 
+            audioManager?.sfxSource.PlayOneShot(audioManager?.drawCard);
+
             c.SetUpCard(currentDeck[0]);
             cardsInHand.Add(c);
 
@@ -113,6 +118,8 @@ public class GameManager : MonoBehaviour
             // gets random card
             int rng = Random.Range(0, i + 1);
 
+            audioManager?.sfxSource.PlayOneShot(audioManager?.drawCard);
+
             // swap cards
             PlayingCard temp = list[i];
             list[i] = list[rng];
@@ -138,6 +145,7 @@ public class GameManager : MonoBehaviour
     {
         if (player.stamina >= card.stamina)
         {
+            audioManager?.sfxSource.PlayOneShot(audioManager?.playerAttack);
             player.UseStamina(card.stamina);
 
             Enemy enemyBeingHit = enemy.GetComponent<Enemy>();
@@ -321,6 +329,9 @@ public class GameManager : MonoBehaviour
         card.GetNewLuckyNumber(newLuck); // Gets new Lucky Number
         // ADD TO DISCARD PILE
         discardPile.Add(card.GetPlayingCard());
+
+        audioManager?.sfxSource.PlayOneShot(audioManager?.drawCard); // Play sound
+
         // REMOVE FROM HAND
         playerHand.Remove(card.GetPlayingCard());
         cardsInHand.Remove(card);
@@ -339,6 +350,8 @@ public class GameManager : MonoBehaviour
         CardManager.Instance.AddNewCard(c.GetPlayingCard());
 
         playerHand.Add(c.GetPlayingCard());
+
+        audioManager?.sfxSource.PlayOneShot(audioManager?.drawCard);
 
         arrangePlayerHand.ArrangeChildren();
         ResetCardPosition();
@@ -385,6 +398,7 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         gameOverScreen.SetActive(true);
         player.playerInfoHUD.SetActive(false);
+        HUDCanvas.Instance?.viewDeckButton.SetActive(false);
     }
 
     public void GameWin()
@@ -405,5 +419,10 @@ public class GameManager : MonoBehaviour
     public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        audioManager.sfxSource.PlayOneShot(clip);
     }
 }

@@ -26,7 +26,7 @@ public class Tim : MonoBehaviour, IInteractable
             hintGiven = true;
             hintBox.enabled = false;
             promptCollider.enabled = true;
-            AudioManager.Instance.sfxSource.PlayOneShot(hint);
+            AudioManager.Instance?.sfxSource.PlayOneShot(hint);
             HUDCanvas.Instance.contextPrompt.SetActive(false);
         }
     }
@@ -35,7 +35,7 @@ public class Tim : MonoBehaviour, IInteractable
     {
         if (canInteract)
         {
-            AudioManager.Instance.sfxSource.PlayOneShot(timVO);
+            AudioManager.Instance?.sfxSource.PlayOneShot(timVO);
             canInteract = false;
             IsInteractable = false;
             HUDCanvas.Instance.contextPrompt.SetActive(false);
