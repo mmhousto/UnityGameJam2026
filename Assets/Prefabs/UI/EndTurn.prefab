@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5471258062459869750}
   - component: {fileID: 2541737273302402070}
   - component: {fileID: 8234324837526781595}
+  - component: {fileID: 5658262723147717638}
   m_Layer: 5
   m_Name: EndTurn
   m_TagString: Untagged
@@ -133,6 +134,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5658262723147717638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2824539797246253864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec68fe1dbd7b10b4bab5a11ac2eb5816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayUIButtonClick
 --- !u!1 &7684508242556652862
 GameObject:
   m_ObjectHideFlags: 0

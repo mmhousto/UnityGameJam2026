@@ -15,6 +15,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip overWorld;
     public AudioClip battle;
     public AudioClip uiClick;
+    public AudioClip collectItem;
+    public AudioClip drawCard;
+    public AudioClip metalPipe;
+    public AudioClip playerAttack;
 
     private void Awake()
     {
@@ -50,18 +54,21 @@ public class AudioManager : MonoBehaviour
             backgroundMusicSource.Stop();
             backgroundMusicSource.clip = mainMenu;
             backgroundMusicSource.Play();
+            HUDCanvas.Instance?.viewDeckButton.SetActive(false);
         }
         else if(scene.name.Contains("area", System.StringComparison.CurrentCultureIgnoreCase))
         {
             backgroundMusicSource.Stop();
             backgroundMusicSource.clip = overWorld;
             backgroundMusicSource.Play();
+            HUDCanvas.Instance?.viewDeckButton.SetActive(true);
         }
         else if (scene.name.Contains("Fight", System.StringComparison.CurrentCultureIgnoreCase))
         {
             backgroundMusicSource.Stop();
             backgroundMusicSource.clip = battle;
             backgroundMusicSource.Play();
+            HUDCanvas.Instance?.viewDeckButton.SetActive(true);
         }
     }
 

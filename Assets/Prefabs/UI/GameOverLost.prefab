@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 4078061460462554378}
   - component: {fileID: 9163464835364511380}
   - component: {fileID: 5671392389061491989}
+  - component: {fileID: 3067238991847938608}
   m_Layer: 5
   m_Name: Try Again
   m_TagString: Untagged
@@ -347,6 +348,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3067238991847938608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8061536590026140337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec68fe1dbd7b10b4bab5a11ac2eb5816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayUIButtonClick
 --- !u!1 &9044875445254975633
 GameObject:
   m_ObjectHideFlags: 0
