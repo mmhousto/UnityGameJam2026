@@ -45,6 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Building
+    uniqueID: 1200917117
+    locked: 0
+  - name: Both
+    uniqueID: 1774659179
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
