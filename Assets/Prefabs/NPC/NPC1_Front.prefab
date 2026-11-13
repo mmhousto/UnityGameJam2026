@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8344536318984257770}
   - component: {fileID: 1636753788707871181}
-  - component: {fileID: 4474892919092159519}
+  - component: {fileID: 8616766651913807143}
   m_Layer: 0
   m_Name: NPC1_Front
   m_TagString: Untagged
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -328525950, guid: 928353b871ec8934b84ede94efbf9e53, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -92,8 +92,8 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!61 &4474892919092159519
-BoxCollider2D:
+--- !u!58 &8616766651913807143
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -126,15 +126,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.64, y: 3.71}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 2.64, y: 3.71}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.038813274, y: 0.7375159}
+  m_Radius: 1.3503801
