@@ -76,6 +76,11 @@ public class GameManager : MonoBehaviour
         {
             GameWin();
         }
+
+        if((gameOverScreen.activeInHierarchy || gameWinScreen.activeInHierarchy) && playerFeedback.activeInHierarchy)
+        {
+            playerFeedback.SetActive(false);
+        }
     }
 
     void DrawCards(int draws)
@@ -162,7 +167,7 @@ public class GameManager : MonoBehaviour
 
                 if (random >= 0.5)
                 {
-                    //NEED TO FIX/ADD
+                    
                     
                 }
                 else
