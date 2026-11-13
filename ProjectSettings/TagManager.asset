@@ -48,7 +48,10 @@ TagManager:
   - name: Building
     uniqueID: 1200917117
     locked: 0
-  - name: Both
+  - name: PLAYER
+    uniqueID: 826405351
+    locked: 0
+  - name: HidePlayer
     uniqueID: 1774659179
     locked: 0
   m_RenderingLayers:
