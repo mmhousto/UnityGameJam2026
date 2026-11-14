@@ -315,10 +315,10 @@ TextureImporter:
       name: Foiliage_8
       rect:
         serializedVersion: 2
-        x: 1102
-        y: 557
+        x: 1186
+        y: 639
         width: 74
-        height: 57
+        height: 58
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -403,9 +403,9 @@ TextureImporter:
       name: Foiliage_12
       rect:
         serializedVersion: 2
-        x: 1030
-        y: 525
-        width: 75
+        x: 959
+        y: 526
+        width: 1
         height: 60
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -425,8 +425,8 @@ TextureImporter:
       name: Foiliage_13
       rect:
         serializedVersion: 2
-        x: 1079
-        y: 478
+        x: 1213
+        y: 398
         width: 74
         height: 52
       alignment: 0
@@ -452,7 +452,7 @@ TextureImporter:
         width: 546
         height: 264
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -474,7 +474,7 @@ TextureImporter:
         width: 532
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -496,7 +496,7 @@ TextureImporter:
         width: 532
         height: 258
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -505,6 +505,28 @@ TextureImporter:
       bones: []
       spriteID: f5a6439041b56f0489b1504211a48cf4
       internalID: -2534346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foiliage_17
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 429
+        width: 217
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a74b1df8c7c10bb41bacd948cd0d94fb
+      internalID: 1235131847
       vertices: []
       indices: 
       edges: []
@@ -534,6 +556,7 @@ TextureImporter:
       Foiliage_14: 1085442751
       Foiliage_15: 812344284
       Foiliage_16: -2534346
+      Foiliage_17: 1235131847
       Foiliage_2: 1892433397
       Foiliage_3: -1818899536
       Foiliage_4: 1056620822
