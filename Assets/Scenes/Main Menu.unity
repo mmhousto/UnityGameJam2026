@@ -4358,44 +4358,39 @@ MonoBehaviour:
 
     Level Design:
 
-    Gabe Mcvey
+    Gabe Mcvey, Aiden Turner, Morgan Houston
 
 
     UI/UX:
 
-    Shayna Dahl, Ruzhen
-    Fan, Gabe Mcvey, Aiden Turner, Morgan Houston
+    Shayna
+    Dahl, Ruzhen Fan, Gabe Mcvey, Aiden Turner, Morgan Houston
 
 
-    Enemy & Environment Assets:
+    Enemy & Environment
+    Assets:
 
     Cass
 
 
-    SFX
-    & Background Music:
+    SFX & Background Music:
 
-    Cass, Pixabay
+    Xavier, Pixabay
 
 
-    Voice Actors:
+    Voice
+    Actors:
 
-    Thirteen - Ruzhen
-    Fan
+    Thirteen - Ruzhen Fan
 
     Maneki - Shayna Dahl
 
-    Lao - Gabe Mcvey
+    Lao - Gabe
+    Mcvey
 
     Tim - Aiden Turner
 
-    Victor
-    - Aiden Turner
-
-
-    Special Thanks to Emotional Support Cats:
-
-    Annabelle'
+    Victor - Aiden Turner'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8eac1f03c70c1dc49be8efcfb8e0f5e5, type: 2}
   m_sharedMaterial: {fileID: -2325709218278329076, guid: 8eac1f03c70c1dc49be8efcfb8e0f5e5, type: 2}

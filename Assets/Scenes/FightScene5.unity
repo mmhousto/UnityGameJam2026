@@ -725,7 +725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 195444342718279934, guid: 1012de2545c13114db2df48850bc3dc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.46
+      value: 4.29
       objectReference: {fileID: 0}
     - target: {fileID: 195444342718279934, guid: 1012de2545c13114db2df48850bc3dc4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -779,6 +779,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: df7c1293abec21047834c2698a374e58, type: 3}
+    - target: {fileID: 3401121444430131736, guid: 1012de2545c13114db2df48850bc3dc4, type: 3}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401121444430131736, guid: 1012de2545c13114db2df48850bc3dc4, type: 3}
+      propertyPath: baseDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4504123590131955243, guid: 1012de2545c13114db2df48850bc3dc4, type: 3}
       propertyPath: m_LocalScale.x
       value: 15.750001
@@ -812,6 +820,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1012de2545c13114db2df48850bc3dc4, type: 3}
+--- !u!114 &676487657 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3401121444430131736, guid: 1012de2545c13114db2df48850bc3dc4, type: 3}
+  m_PrefabInstance: {fileID: 676487656}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e420b48d19a4d984cb95b116134bc6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
 --- !u!1 &697873592
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,8 +897,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.37106913, g: 0.37106913, b: 0.37106913, a: 1}
+  m_Sprite: {fileID: 2114099047, guid: d7d42b8bb0d83964aa43dc58654530c4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -898,7 +917,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 25, y: 25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1017,7 +1036,7 @@ PrefabInstance:
     - target: {fileID: 3829696897817704763, guid: e8015bee524eba546af08f6f45a3b509, type: 3}
       propertyPath: 'enemies.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 676487657}
     - target: {fileID: 4081892098489958680, guid: e8015bee524eba546af08f6f45a3b509, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1303.0767

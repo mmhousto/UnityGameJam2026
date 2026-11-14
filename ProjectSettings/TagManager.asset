@@ -54,6 +54,9 @@ TagManager:
   - name: HidePlayer
     uniqueID: 1774659179
     locked: 0
+  - name: No LIGHT
+    uniqueID: 3557055131
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1

@@ -35,6 +35,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FightScene4.unity
     guid: a34a0be3c191fb749b9a061cc0791e8a
+  - enabled: 1
+    path: Assets/Scenes/tower floor 5.unity
+    guid: c70697d8623e8a1449569a2f92ff56e0
+  - enabled: 1
+    path: Assets/Scenes/FightScene5.unity
+    guid: 7e86792b296acc745944ee67a57ff318
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: acb62a334f202f2408c26840a27d6e34
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
